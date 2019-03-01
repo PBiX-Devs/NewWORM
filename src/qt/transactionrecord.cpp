@@ -75,7 +75,11 @@ QList<TransactionRecord> TransactionRecord::decomposeTransaction(const CWallet* 
         } else {
             // Masternode reward
             CTxDestination destMN;
+            
+            LogPrintf("%s wtx.vout.size():%d\n", __func__, wtx.vout.size());
             int nIndexMN = wtx.vout.size() - 1;
+            if (wtx.vout.size() > 2)
+                nIndexMN = wtx.vout.size() - 2;
             if (ExtractDestination(wtx.vout[nIndexMN].scriptPubKey, destMN) && IsMine(*wallet, destMN)) {
                 isminetype mine = wallet->IsMine(wtx.vout[nIndexMN]);
                 sub.involvesWatchAddress = mine & ISMINE_WATCH_ONLY;
