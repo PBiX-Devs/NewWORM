@@ -59,6 +59,7 @@
         <file alias="explorer">res/icons/explorer.png</file>
         <file alias="automint_inactive">res/icons/automint_inactive.png</file>
         <file alias="onion">res/icons/onion.png</file>
+        <file alias="announcement">res/icons/announcement.png</file>
     </qresource>
     <qresource prefix="/css">
         <file alias="default">res/css/default.css</file>

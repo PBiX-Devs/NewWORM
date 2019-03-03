@@ -36,7 +36,7 @@ static const bool DEFAULT_SPLASHSCREEN = true;
 #define COLOR_BLACK QColor(51, 51, 51)
 #define COLOR_WHITE QColor(255, 255, 255)
 /* Transaction list -- TX status decoration - conflicted */
-#define COLOR_CONFLICTED QColor(170, 29, 33)
+#define COLOR_CONFLICTED QColor(204, 51, 51)
 
 /* Transaction list -- TX status decoration - orphan (Light Gray #D3D3D3) */
 #define COLOR_ORPHAN QColor(211, 211, 211)

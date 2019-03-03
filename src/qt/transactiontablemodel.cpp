@@ -580,7 +580,7 @@ QVariant TransactionTableModel::data(const QModelIndex& index, int role) const
             if (rec->status.status == TransactionStatus::Conflicted || rec->status.status == TransactionStatus::NotAccepted)
                 return COLOR_ORPHAN;
             else
-                return COLOR_STAKE;
+                return COLOR_BLACK;
         }
         // Conflicted tx
         if (rec->status.status == TransactionStatus::Conflicted || rec->status.status == TransactionStatus::NotAccepted) {

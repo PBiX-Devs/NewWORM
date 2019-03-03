@@ -1,6 +1,7 @@
 // Copyright (c) 2011-2014 The Bitcoin developers
 // Copyright (c) 2017-2018 The PIVX developers
-// Copyright (c) 2018 The Crypto Dezire Cash developers
+// Copyright (c) 2018 The PIVX developers
+// Copyright (c) 2018-2019 The Crypto Dezire Cash developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -95,6 +96,7 @@ private:
     QProgressDialog* progressDialog;
 
     QMenuBar* appMenuBar;
+    QAction* annAction;
     QAction* overviewAction;
     QAction* historyAction;
     QAction* masternodeAction;
@@ -206,6 +208,8 @@ private:
 
 private slots:
 #ifdef ENABLE_WALLET
+    /** Switch to announcement page */
+    void gotoAnnView();
     /** Switch to overview (home) page */
     void gotoOverviewPage();
     /** Switch to history (transactions) page */

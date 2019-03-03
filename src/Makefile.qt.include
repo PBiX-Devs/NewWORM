@@ -56,6 +56,8 @@ QT_FORMS_UI = \
   qt/forms/openuridialog.ui \
   qt/forms/optionsdialog.ui \
   qt/forms/overviewpage.ui \
+  qt/forms/annwidget.ui \
+  qt/forms/announcementview.ui \
   qt/forms/receivecoinsdialog.ui \
   qt/forms/privacydialog.ui \
   qt/forms/receiverequestdialog.ui \
@@ -95,6 +97,8 @@ QT_MOC_CPP = \
   qt/moc_optionsdialog.cpp \
   qt/moc_optionsmodel.cpp \
   qt/moc_overviewpage.cpp \
+  qt/moc_annwidget.cpp \
+  qt/moc_announcementview.cpp \
   qt/moc_peertablemodel.cpp \
   qt/moc_paymentserver.cpp \
   qt/moc_qvalidatedlineedit.cpp \
@@ -171,6 +175,8 @@ BITCOIN_QT_H = \
   qt/optionsdialog.h \
   qt/optionsmodel.h \
   qt/overviewpage.h \
+  qt/annwidget.h \
+  qt/announcementview.h \
   qt/paymentrequestplus.h \
   qt/paymentserver.h \
   qt/peertablemodel.h \
@@ -202,6 +208,7 @@ BITCOIN_QT_H = \
   qt/zcdzccontroldialog.h
 
 RES_ICONS = \
+  qt/res/icons/announcement.png \	
   qt/res/icons/add.png \
   qt/res/icons/address-book.png \
   qt/res/icons/automint_active.png \
@@ -310,6 +317,8 @@ BITCOIN_QT_CPP += \
   qt/multisigdialog.cpp\
   qt/openuridialog.cpp \
   qt/overviewpage.cpp \
+  qt/annwidget.cpp \
+  qt/announcementview.cpp \
   qt/paymentrequestplus.cpp \
   qt/paymentserver.cpp \
   qt/receivecoinsdialog.cpp \
