@@ -45,6 +45,10 @@ DIST_CONTRIB = $(top_srcdir)/contrib/cryptodezirecash-cli.bash-completion \
            $(top_srcdir)/contrib/init \
            $(top_srcdir)/contrib/install_db4.sh
 
+DIST_SHARE = \
+           $(top_srcdir)/share/genbuild.sh \
+           $(top_srcdir)/share/rpcauth
+
 WINDOWS_PACKAGING = $(top_srcdir)/share/pixmaps/cryptodezirecash.ico \
   $(top_srcdir)/share/pixmaps/nsis-header.bmp \
   $(top_srcdir)/share/pixmaps/nsis-wizard.bmp \
@@ -62,17 +66,7 @@ COVERAGE_INFO = baseline.info \
   test_cryptodezirecash_coverage.info test_cryptodezirecash.info
 
 dist-hook:
-	-$(MAKE) -C $(top_distdir)/src/leveldb clean
-	-$(MAKE) -C $(top_distdir)/src/secp256k1 distclean
 	-$(GIT) archive --format=tar HEAD -- src/clientversion.cpp | $(AMTAR) -C $(top_distdir) -xf -
-
-distcheck-hook:
-	$(MKDIR_P) $(top_distdir)/_build/src/leveldb
-	cp -rf $(top_srcdir)/src/leveldb/* $(top_distdir)/_build/src/leveldb/
-	-$(MAKE) -C $(top_distdir)/_build/src/leveldb clean
-
-distcleancheck:
-	@:
 
 $(BITCOIN_WIN_INSTALLER): all-recursive
 	$(MKDIR_P) $(top_builddir)/release
@@ -99,9 +93,9 @@ $(OSX_APP)/Contents/Resources/cryptodezirecash.icns: $(OSX_INSTALLER_ICONS)
 	$(MKDIR_P) $(@D)
 	$(INSTALL_DATA) $< $@
 
-$(OSX_APP)/Contents/MacOS/CryptoDezireCash-Qt: $(BITCOIN_QT_BIN)
+$(OSX_APP)/Contents/MacOS/CryptoDezireCash-Qt: all-recursive
 	$(MKDIR_P) $(@D)
-	STRIPPROG="$(STRIP)" $(INSTALL_STRIP_PROGRAM)  $< $@
+	STRIPPROG="$(STRIP)" $(INSTALL_STRIP_PROGRAM)  $(BITCOIN_QT_BIN) $@
 
 $(OSX_APP)/Contents/Resources/Base.lproj/InfoPlist.strings:
 	$(MKDIR_P) $(@D)
@@ -221,7 +215,7 @@ endif
 
 dist_noinst_SCRIPTS = autogen.sh
 
-EXTRA_DIST = $(top_srcdir)/share/genbuild.sh qa/pull-tester/rpc-tests.sh qa/pull-tester/run-bitcoin-cli qa/rpc-tests $(DIST_DOCS) $(WINDOWS_PACKAGING) $(OSX_PACKAGING)
+EXTRA_DIST = $(DIST_SHARE) qa/pull-tester/rpc-tests.sh qa/pull-tester/run-bitcoin-cli qa/rpc-tests $(DIST_CONTRIB) $(DIST_DOCS) $(WINDOWS_PACKAGING) $(OSX_PACKAGING) $(BIN_CHECKS)
 
 CLEANFILES = $(OSX_DMG) $(BITCOIN_WIN_INSTALLER)
 
