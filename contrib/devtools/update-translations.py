@@ -37,12 +37,12 @@ def check_at_repository_root():
     if not os.path.exists('.git'):
         print('No .git directory found')
         print('Execute this script at the root of the repository', file=sys.stderr)
-        sys.exit(1)
+        exit(1)
 
 def fetch_all_translations():
     if subprocess.call([TX, 'pull', '-f', '-a']):
         print('Error while fetching translations', file=sys.stderr)
-        sys.exit(1)
+        exit(1)
 
 def find_format_specifiers(s):
     '''Find all format specifiers in a string.'''
@@ -52,7 +52,10 @@ def find_format_specifiers(s):
         percent = s.find('%', pos)
         if percent < 0:
             break
+        try:
         specifiers.append(s[percent+1])
+        except:
+            print('Failed to get specifier')
         pos = percent+2
     return specifiers
 

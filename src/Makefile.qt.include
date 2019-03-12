@@ -208,7 +208,7 @@ BITCOIN_QT_H = \
   qt/zcdzccontroldialog.h
 
 RES_ICONS = \
-  qt/res/icons/announcement.png \	
+  qt/res/icons/announcement.png \
   qt/res/icons/add.png \
   qt/res/icons/address-book.png \
   qt/res/icons/automint_active.png \

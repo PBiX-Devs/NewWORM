@@ -24,7 +24,7 @@ import time
 
 year = time.gmtime()[0]
 last_year = year - 1
-command = "perl -pi -e 's/%s The Crypto Dezire Cash/%s The Crypto Dezire Cash/' %s"
+command = "perl -pi -e 's/%s The Bitcoin/%s The Bitcoin/' %s"
 listFilesCommand = "find . | grep %s"
 
 extensions = [".cpp",".h"]
