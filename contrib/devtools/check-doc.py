@@ -7,6 +7,7 @@
 '''
 This checks if all command line args are documented.
 Return value is 0 to indicate no error.
+
 Author: @MarcoFalke
 '''
 
@@ -30,8 +31,8 @@ def main():
 
     args_used = set(re.findall(re.compile(REGEX_ARG), used))
     args_docd = set(re.findall(re.compile(REGEX_DOC), docd)).union(SET_DOC_OPTIONAL)
-  args_need_doc = args_used.difference(args_docd)
-  args_unknown = args_docd.difference(args_used)
+    args_need_doc = args_used.difference(args_docd)
+    args_unknown = args_docd.difference(args_used)
 
     print("Args used        : {}".format(len(args_used)))
     print("Args documented  : {}".format(len(args_docd)))
@@ -41,6 +42,7 @@ def main():
     print(args_unknown)
 
     sys.exit(len(args_need_doc))
+
 
 if __name__ == "__main__":
     main()

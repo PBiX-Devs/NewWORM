@@ -9,11 +9,11 @@ a perl regex one liner.
 
 For example: if it finds something like this and we're in 2017
 
-// Copyright (c) 2017-2018 The Crypto Dezire Cash developers
+// Copyright (c) 2009-2013 The Bitcoin developers
 
 it will change it to
 
-// Copyright (c) 2017-2019 The Crypto Dezire Cash developers
+// Copyright (c) 2009-2014 The Bitcoin developers
 
 It will do this for all the files in the folder and its children.
 

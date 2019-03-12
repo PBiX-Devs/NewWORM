@@ -53,7 +53,7 @@ def find_format_specifiers(s):
         if percent < 0:
             break
         try:
-        specifiers.append(s[percent+1])
+            specifiers.append(s[percent+1])
         except:
             print('Failed to get specifier')
         pos = percent+2
@@ -209,4 +209,3 @@ if __name__ == '__main__':
     check_at_repository_root()
     fetch_all_translations()
     postprocess_translations()
-
