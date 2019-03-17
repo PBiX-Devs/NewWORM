@@ -387,7 +387,7 @@
               </font>
              </property>
              <property name="styleSheet">
-                <string notr="true">color:#a71c20;</string>
+                <string notr="true">color:#f6bd10;</string>
             </property>
              <property name="text">
               <string>Requested payments history</string>

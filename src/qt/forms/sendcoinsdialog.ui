@@ -232,7 +232,7 @@
                      </font>
                     </property>
                     <property name="styleSheet">
-                     <string notr="true">color:#a71c20;font-weight:bold;</string>
+                     <string notr="true">color:#f6bd10;font-weight:bold;</string>
                     </property>
                     <property name="text">
                      <string>Coin Control Features</string>

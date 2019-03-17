@@ -26,7 +26,8 @@ TransactionFilterProxy::TransactionFilterProxy(QObject* parent) : QSortFilterPro
                                                                   watchOnlyFilter(WatchOnlyFilter_All),
                                                                   minAmount(0),
                                                                   limitRows(-1),
-                                                                  showInactive(true)
+                                                                  showInactive(true),
+                                                                  fHideOrphans(false)
 {
 }
 

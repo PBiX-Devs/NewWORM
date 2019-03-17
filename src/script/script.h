@@ -209,6 +209,8 @@ public:
         m_value = n;
     }
 
+    static const size_t nDefaultMaxNumSize = 4;
+
     explicit CScriptNum(const std::vector<unsigned char>& vch, bool fRequireMinimal)
     {
         if (vch.size() > nMaxNumSize) {
