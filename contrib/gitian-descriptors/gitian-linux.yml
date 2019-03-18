@@ -1,5 +1,5 @@
 ---
-name: "cryptodezirecash-linux-1.2.1.0"
+name: "cryptodezirecash-linux-2.0.0.0"
 enable_cache: true
 suites:
 - "bionic"

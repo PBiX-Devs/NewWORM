@@ -2986,13 +2986,13 @@ bool CWallet::CreateCoinStake(
     }
 
     if (listInputs.empty()) {
-        LogPrintf("CreateCoinStake(): listInputs empty\n");
+        if (fDebug) LogPrintf("CreateCoinStake(): listInputs empty\n");
         return false;
     }
-
+    
     if (GetAdjustedTime() - chainActive.Tip()->GetBlockTime() < 60)
         MilliSleep(10000);
-
+    
     CAmount nCredit;
     CScript scriptPubKeyKernel;
     bool fKernelFound = false;
