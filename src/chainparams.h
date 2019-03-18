@@ -93,6 +93,7 @@ public:
     const std::vector<CAddress>& FixedSeeds() const { return vFixedSeeds; }
     virtual const Checkpoints::CCheckpointData& Checkpoints() const = 0;
     int PoolMaxTransactions() const { return nPoolMaxTransactions; }
+    CAmount StakeInputMinimal() const { return nStakeInputMinimal; }
 
     /** Spork key and Masternode Handling **/
     std::string SporkKey() const { return strSporkKey; }
@@ -200,6 +201,7 @@ protected:
     int nBlockZerocoinV2;
 
     int nZerocoinAccumulationStartHeight;
+    CAmount nStakeInputMinimal;
 };
 
 /**

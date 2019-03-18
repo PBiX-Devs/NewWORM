@@ -3118,10 +3118,11 @@ void static UpdateTip(CBlockIndex* pindexNew)
 {
     chainActive.SetTip(pindexNew);
 
-
+#ifdef ENABLE_WALLET
     // If turned on AutoZeromint will automatically convert CDZC to zCDZC
-    if (pwalletMain->isZeromintEnabled ())
+    if (pwalletMain && pwalletMain->isZeromintEnabled())
         pwalletMain->AutoZeromint ();
+#endif // ENABLE_WALLET
 
     // New best block
     nTimeBestReceived = GetTime();

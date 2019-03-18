@@ -76,7 +76,7 @@ bool CZCdzcStake::GetModifier(uint64_t& nStakeModifier)
 {
     CBlockIndex* pindex = GetIndexFrom();
     if (!pindex)
-        return false;
+        return error("%s: failed to get index from", __func__);
 
     int64_t nTimeBlockFrom = pindex->GetBlockTime();
     while (true) {

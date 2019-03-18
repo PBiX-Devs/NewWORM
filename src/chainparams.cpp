@@ -143,6 +143,7 @@ public:
         nMaxMoneyOut = 21000000 * COIN;        // Max. Money 
         nRequiredMasternodeCollateral = 10000 * COIN; //10,000
         nDevFundPercent = 5;
+        nStakeInputMinimal = 50 * COIN;
 
         /** Height or Time Based Activations **/
         nLastPOWBlock = 1001;                   // PoW Phase 3 End
@@ -293,7 +294,7 @@ public:
         nBlockZerocoinV2 = 26150; //The block that zerocoin v2 becomes active
         nEnforceNewSporkKey = 1536019200; //!> Sporks signed after Tuesday September 4, 2018 12:00:00 AM GMT must use the new spork key
         nRejectOldSporkKey = 1538611200; //!> Reject old spork key after October 4, 2018 12:00:00 AM GMT
-    
+        nStakeInputMinimal = 20 * COIN;
         nZerocoinStartHeight = 50;            // Start accumulation coins here - first zerocoin mint occurs at block 87
     
         //! Modify the testnet genesis block so the timestamp is valid for a later start.
@@ -369,6 +370,7 @@ public:
         genesis.nTime = 1518696183;             // GMT: Thursday, 15. February 2018 12:03:03
         genesis.nBits = 0x207fffff;
         genesis.nNonce = 1;                // hex 57 47 52 in text = CDZC
+        nStakeInputMinimal = 20 * COIN;
 
         hashGenesisBlock = genesis.GetHash();
         nDefaultPort = 55006;
