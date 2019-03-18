@@ -1936,6 +1936,9 @@ CAmount GetMasternodePayment(int nHeight, int64_t blockValue, int nMasternodeCou
     } else if (nHeight <= 200103) {
             ret = blockValue * .75; 
     } else {
+        if (isZWGRStake)
+            ret = 0;
+        else
             ret = blockValue * .74;  
     } 
     
