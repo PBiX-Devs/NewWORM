@@ -1,3 +1,5 @@
+#!/bin/bash -ex
+
 if [ $# -lt 5 ] ; then
     echo "Usage: $0 basedir outdir releasedir commit host"
     exit 1
