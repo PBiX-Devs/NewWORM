@@ -9,7 +9,7 @@ Crypto Dezire Cash is a cutting edge cryptocurrency, with many features not avai
   technology used to secure the network and provide the above features, each Masternode is secured
   with a collateral of 10K CDZC.
 
-More information at [cryptodezire.com](https://cryptodezire.com/) Visit our ANN thread at [BitcoinTalk](#)
+More information at [cryptodezire.com](https://cryptodezire.com/) Visit our ANN thread at [BitcoinTalk](https://bitcointalk.org/index.php?topic=5056088)
 
 ### Coin Specs
 <table>
