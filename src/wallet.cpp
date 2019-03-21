@@ -2984,14 +2984,14 @@ bool CWallet::CreateCoinStake(
         LogPrintf("CreateCoinStake(): selectStakeCoins failed\n");
         return false;
     }
-
+    
+    if (GetAdjustedTime() - chainActive.Tip()->GetBlockTime() < 60)
+        MilliSleep(10000);
+    
     if (listInputs.empty()) {
         if (fDebug) LogPrintf("CreateCoinStake(): listInputs empty\n");
         return false;
     }
-    
-    if (GetAdjustedTime() - chainActive.Tip()->GetBlockTime() < 60)
-        MilliSleep(10000);
     
     CAmount nCredit;
     CScript scriptPubKeyKernel;
