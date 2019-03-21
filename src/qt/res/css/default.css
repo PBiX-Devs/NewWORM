@@ -113,6 +113,10 @@ WalletFrame {
         background-color:  transparent;
     }
     
+    QPlainTextEdit {
+        background-color:#565656;color:#fff;
+    }
+    
     QProgressBar {
     color: #AAAAAA;
     border:0px solid grey;
@@ -194,24 +198,24 @@ WalletFrame {
     }
     
     .QValidatedLineEdit:!focus {
-    color:#f6bd10;
+    color:#330;
     background-color:#e7e7e7;
     }
     
     .QLineEdit:!focus {
-    color:#f6bd10;
+    color:#330;
     background-color:#e7e7e7;
     }
     
     .QTextEdit:!focus {
-    color:#f6bd10;
+    color:#330;
     background-color:#e7e7e7;
     }
     
     /* .QValidatedLineEdit:checked, .QLineEdit:checked */
     
     .QValidatedLineEdit:disabled, .QLineEdit:disabled, .QTextEdit:disabled {
-    color: #f6bd10;
+    color: #330;
     background-color:#f2f2f2;
     }
     
@@ -1808,6 +1812,13 @@ WalletFrame {
     margin:2px;
     min-height: 24px;
     min-width: 24px;
+    }
+    
+    QWidget#PrivacyDialog .QCheckBox#checkBoxMintChange, .QCheckBox#checkBoxMinimizeChange {
+    color:#ffffff;
+    border-radius:5px;
+    padding-top:5px;
+    padding-bottom:5px;
     }
 
     /**************************** MASTERNODE LIST *******************************************/

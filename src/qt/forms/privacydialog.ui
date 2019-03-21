@@ -1093,6 +1093,9 @@ zCDZC are mature when they have more than 20 confirmations AND more than 2 mints
                             <property name="text">
                              <string>Convert Change to Zerocoin (might cost additional fees)</string>
                             </property>
+                            <property name="styleSheet">
+                                <string notr="true">color:#ffffff;</string>
+                            </property>
                            </widget>
                           </item>
                           <item>
