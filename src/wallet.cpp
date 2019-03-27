@@ -2106,8 +2106,8 @@ bool CWallet::SelectStakeCoins(std::list<std::unique_ptr<CStakeInput> >& listInp
             if (nAmountSelected + out.tx->vout[out.i].nValue > nTargetAmount)
                 continue;
 
-            if (out.tx->vout[out.i].nValue < Params().StakeInputMinimal())
-                continue;
+            //if (out.tx->vout[out.i].nValue < Params().StakeInputMinimal())
+            //    continue;
 
             //if zerocoinspend, then use the block time
             int64_t nTxTime = out.tx->GetTxTime();
@@ -2985,13 +2985,13 @@ bool CWallet::CreateCoinStake(
         return false;
     }
     
-    if (GetAdjustedTime() - chainActive.Tip()->GetBlockTime() < 60)
-        MilliSleep(10000);
-    
     if (listInputs.empty()) {
         if (fDebug) LogPrintf("CreateCoinStake(): listInputs empty\n");
         return false;
     }
+    
+    if (GetAdjustedTime() - chainActive.Tip()->GetBlockTime() < 60)
+        MilliSleep(10000);
     
     CAmount nCredit;
     CScript scriptPubKeyKernel;
