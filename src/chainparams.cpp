@@ -145,7 +145,7 @@ public:
         nMasternodeCountDrift = 20;             
         nMaxMoneyOut = 21000000 * COIN;        // Max. Money 
         nRequiredMasternodeCollateral = 10000 * COIN; //10,000
-        nDevFundPercent = 33;
+        nDevFundPercent = 5;
         nStakeInputMinimal = 50 * COIN;
 
         /** Height or Time Based Activations **/
