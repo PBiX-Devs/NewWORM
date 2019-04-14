@@ -56,24 +56,12 @@ static void convertSeed6(std::vector<CAddress>& vSeedsOut, const SeedSpec6* data
 static Checkpoints::MapCheckpoints mapCheckpoints =
     boost::assign::map_list_of
     // WORMDevs - RELEASE CHANGE - Checkpoins, timestamp of last checkpoint, total nr. of transactions
-    (       0, uint256("0x000005b30531c8d540e58a1a85afb65ab44028cf68f0b3d299565c9d41c3778b"))
-    (    1879, uint256("0x0f63f24b5689085ff6544c1fcc8f79d3f1dabc1cf08e63403168cd10eb2932f2"))
-    (    1880, uint256("0x56fcdb49b802bb11a46b5fabeedc0e647aa3909ad199c3f400d6b3aa1e4fd0fc"))
-    (    2050, uint256("0x374d6830d494c51084841d45de48ef166d11dd3f82fd11efdba875d055ba737c"))
-    (   18950, uint256("0xb60b35097e6e201ca9d69d6dafe013ad50c53d402bee88701d93da7f535a9593"))
-    (   20500, uint256("0x47141f5f5bfe89ac62f830681fdeecc05addb6ccf342129cfe117d0e74818a20"))
-    (   50102, uint256("0x852e3327005be853df57d7bb8e91b5528276c987031e4ddb59c50a66d7619f6b"))
-    (  148990, uint256("0x737811aa1da3d7273a70b687ace80ee4486562ab14c84a626c9210a063e3d363"))
-    (  156170, uint256("0xaf3dd7ba23486f057bd8daccf93223f6c685865d29d2b40b813f2fe798727f95"))
-    (  161645, uint256("0xbbc89be95110a0580bad26cb35b24bcac8e53d37cedaec48381be82e9041c9cb"))
-    (  228540, uint256("0x44dae55044a001d7acfa72334897c132d1f18cce6e58ccbdaa86718cd066ff64"))
-    (  235730, uint256("0x164d2cdf0e3a1f3cde6d08d2d56ff771e7cc2332bc07ef9ec8a047666ada7307"))
-    (  236972, uint256("0x0ed0037c39f5f9d103574cf49ee67f47522768cf60bdd1d2f5ebc27cd2b0ee46"))
+    (       0, uint256("0x00"))
     ; 
 static const Checkpoints::CCheckpointData data = {
     &mapCheckpoints,
-    1549054948, // * UNIX timestamp of last checkpoint block
-    481457,      // * total number of transactions between genesis and last checkpoint
+    0, // * UNIX timestamp of last checkpoint block
+    0,      // * total number of transactions between genesis and last checkpoint
                 //   (the tx=... number in the SetBestChain debug.log lines)
     5000        // * estimated number of transactions per day after checkpoint
 };
