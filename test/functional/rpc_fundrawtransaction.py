@@ -201,9 +201,9 @@ class RawTransactionsTest(BitcoinTestFramework):
 
         try:
             self.nodes[2].fundrawtransaction(rawtx, {'changeAddress': 'foobar'})
-            raise AssertionError("Accepted invalid cryptodezirecash address")
+            raise AssertionError("Accepted invalid worm address")
         except JSONRPCException as e:
-            assert("changeAddress must be a valid cryptodezirecash address" in e.error['message'])
+            assert("changeAddress must be a valid worm address" in e.error['message'])
 
 
         ############################################################

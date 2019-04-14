@@ -1,6 +1,6 @@
 // Copyright (c) 2014-2015 The Dash developers
 // Copyright (c) 2015-2018 The PIVX developers
-// Copyright (c) 2018 The Crypto Dezire Cash developers
+// Copyright (c) 2018 The WORM developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -269,7 +269,7 @@ bool IsBlockPayeeValid(const CBlock& block, int nBlockHeight)
     return true;
 }
 
-void FillBlockPayee(CMutableTransaction& txNew, CAmount nFees, bool fProofOfStake, bool fZCDZCStake)
+void FillBlockPayee(CMutableTransaction& txNew, CAmount nFees, bool fProofOfStake, bool fZWORMStake)
 {
     CBlockIndex* pindexPrev = chainActive.Tip();
     if (!pindexPrev) 
@@ -278,7 +278,7 @@ void FillBlockPayee(CMutableTransaction& txNew, CAmount nFees, bool fProofOfStak
     // if (IsSporkActive(SPORK_13_ENABLE_SUPERBLOCKS) && budget.IsBudgetPaymentBlock(pindexPrev->nHeight + 1)) {
     //     budget.FillBlockPayee(txNew, nFees, fProofOfStake);
     // } else {
-    masternodePayments.FillBlockPayee(txNew, nFees, fProofOfStake, fZCDZCStake);
+    masternodePayments.FillBlockPayee(txNew, nFees, fProofOfStake, fZWORMStake);
     // }
 }
 
@@ -291,7 +291,7 @@ std::string GetRequiredPaymentsString(int nBlockHeight)
     }
 }
 
-void CMasternodePayments::FillBlockPayee(CMutableTransaction& txNew, int64_t nFees, bool fProofOfStake, bool fZCDZCStake)
+void CMasternodePayments::FillBlockPayee(CMutableTransaction& txNew, int64_t nFees, bool fProofOfStake, bool fZWORMStake)
 {
     CBlockIndex* pindexPrev = chainActive.Tip();
     if (!pindexPrev) 
@@ -315,7 +315,7 @@ void CMasternodePayments::FillBlockPayee(CMutableTransaction& txNew, int64_t nFe
     }
 
     CAmount blockValue = GetBlockValue(nTargetHeight);
-    CAmount masternodePayment = GetMasternodePayment(nTargetHeight, blockValue, 0, fZCDZCStake);
+    CAmount masternodePayment = GetMasternodePayment(nTargetHeight, blockValue, 0, fZWORMStake);
     CAmount devFund = GetDevFundPayment(nTargetHeight, blockValue);
     
     if (!fProofOfStake) {

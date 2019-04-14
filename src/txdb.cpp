@@ -1,7 +1,7 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2014 The Bitcoin developers
 // Copyright (c) 2016-2018 The PIVX developers
-// Copyright (c) 2018 The Crypto Dezire Cash developers
+// Copyright (c) 2018 The WORM developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -272,7 +272,7 @@ bool CBlockTreeDB::LoadBlockIndexGuts()
 
                 //populate accumulator checksum map in memory
                 if(pindexNew->nAccumulatorCheckpoint != 0 && pindexNew->nAccumulatorCheckpoint != nPreviousCheckpoint) {
-                    //Don't load any checkpoints that exist before v2 zcdzc. The accumulator is invalid for v1 and not used.
+                    //Don't load any checkpoints that exist before v2 zworm. The accumulator is invalid for v1 and not used.
                     if (pindexNew->nHeight >= Params().Zerocoin_Block_V2_Start())
                         LoadAccumulatorValuesFromDB(pindexNew->nAccumulatorCheckpoint);
 

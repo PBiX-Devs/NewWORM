@@ -1,6 +1,6 @@
 // Copyright (c) 2011-2014 The Bitcoin developers
 // Copyright (c) 2018 PIVX developers
-// Copyright (c) 2019 The Crypto Dezire Cash developers
+// Copyright (c) 2019 The WORM developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -8,7 +8,7 @@
 #define BITCOIN_QT_PAYMENTSERVER_H
 
 // This class handles payment requests from clicking on
-// cryptodezirecash: URIs
+// worm: URIs
 //
 // This is somewhat tricky, because we have to deal with
 // the situation where the user clicks on a link during

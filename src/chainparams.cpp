@@ -2,7 +2,7 @@
 // Copyright (c) 2009-2014 The Bitcoin developers
 // Copyright (c) 2014-2015 The Dash developers
 // Copyright (c) 2015-2018 The PIVX developers
-// Copyright (c) 2018 The Crypto Dezire Cash developers
+// Copyright (c) 2018 The WORM developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -55,7 +55,7 @@ static void convertSeed6(std::vector<CAddress>& vSeedsOut, const SeedSpec6* data
 // + Contains no strange transactions
 static Checkpoints::MapCheckpoints mapCheckpoints =
     boost::assign::map_list_of
-    // Crypto Dezire CashDevs - RELEASE CHANGE - Checkpoins, timestamp of last checkpoint, total nr. of transactions
+    // WORMDevs - RELEASE CHANGE - Checkpoins, timestamp of last checkpoint, total nr. of transactions
     (       0, uint256("0x000005b30531c8d540e58a1a85afb65ab44028cf68f0b3d299565c9d41c3778b"))
     (    1879, uint256("0x0f63f24b5689085ff6544c1fcc8f79d3f1dabc1cf08e63403168cd10eb2932f2"))
     (    1880, uint256("0x56fcdb49b802bb11a46b5fabeedc0e647aa3909ad199c3f400d6b3aa1e4fd0fc"))
@@ -132,15 +132,15 @@ public:
         pchMessageStart[3] = 0xfd;              
         vAlertPubKey = ParseHex("04952f2b5c9a14b944d545164e47bc9b2e3ad2835354d8febecef3ec8d73615b5596f02e6087ef15f093ce11fa24069cca717153d87470b3641c1aaf1471a58de8");
         nDefaultPort = 35601;                   
-        bnProofOfWorkLimit = ~uint256(0) >> 20; // Crypto Dezire Cash starting difficulty is 1 / 2^12
+        bnProofOfWorkLimit = ~uint256(0) >> 20; // WORM starting difficulty is 1 / 2^12
         nSubsidyHalvingInterval = 210000;       // Halving interval
         nMaxReorganizationDepth = 100;          
         nEnforceBlockUpgradeMajority = 750;     
         nRejectBlockOutdatedMajority = 950;     
         nToCheckBlockUpgradeMajority = 1000;    
         nMinerThreads = 0;                      // Obsolete (**TODO**)
-        nTargetTimespan = 2 * 60;               // Crypto Dezire Cash: 
-        nTargetSpacing = 2 * 60;                // Crypto Dezire Cash: 
+        nTargetTimespan = 2 * 60;               // WORM: 
+        nTargetSpacing = 2 * 60;                // WORM: 
         nMaturity = 100;                        // Block maturity
         nMasternodeCountDrift = 20;             
         nMaxMoneyOut = 21000000 * COIN;        // Max. Money 
@@ -192,14 +192,14 @@ public:
         assert(hashGenesisBlock == uint256("0x000005b30531c8d540e58a1a85afb65ab44028cf68f0b3d299565c9d41c3778b"));
         assert(genesis.hashMerkleRoot == uint256("0x4cc63d4be53fe2310024ff7137a755d5504abf9e94e95740288862aaa385e193"));
 
-        vSeeds.push_back(CDNSSeedData("1", "seed01.cryptodezirecash.com"));      // Crypto Dezire Cash's official seed 1
-        vSeeds.push_back(CDNSSeedData("2", "seed02.cryptodezirecash.com"));      // Crypto Dezire Cash's official seed 2
-        vSeeds.push_back(CDNSSeedData("3", "seed03.cryptodezirecash.com"));      // Crypto Dezire Cash's official seed 3
+        vSeeds.push_back(CDNSSeedData("1", "seed01.worm.com"));      // WORM's official seed 1
+        vSeeds.push_back(CDNSSeedData("2", "seed02.worm.com"));      // WORM's official seed 2
+        vSeeds.push_back(CDNSSeedData("3", "seed03.worm.com"));      // WORM's official seed 3
         vSeeds.push_back(CDNSSeedData("4", "149.28.236.40"));
         vSeeds.push_back(CDNSSeedData("5", "149.28.61.241"));
         vSeeds.push_back(CDNSSeedData("6", "139.180.207.56"));
         
-        // Crypto Dezire Cash addresses start with 'D'
+        // WORM addresses start with 'D'
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 30);
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 63);
         base58Prefixes[SECRET_KEY] = std::vector<unsigned char>(1, 199);
@@ -237,7 +237,7 @@ public:
         nRequiredAccumulation = 1;
         nDefaultSecurityLevel = 100; //full security level for accumulators
         nZerocoinHeaderVersion = 4; //Block headers must be this version once zerocoin is active
-        nZerocoinRequiredStakeDepth = 200; //The required confirmations for a zcdzc to be stakable
+        nZerocoinRequiredStakeDepth = 200; //The required confirmations for a zworm to be stakable
 
         nBudget_Fee_Confirmations = 6; // Number of confirmations for the finalization fee
     }
@@ -278,8 +278,8 @@ public:
         nRejectBlockOutdatedMajority = 75;
         nToCheckBlockUpgradeMajority = 100;
         nMinerThreads = 0;
-        nTargetTimespan = 1 * 60; // Crypto Dezire Cash: 1 day
-        nTargetSpacing = 1 * 60;  // Crypto Dezire Cash: 1 minute
+        nTargetTimespan = 1 * 60; // WORM: 1 day
+        nTargetSpacing = 1 * 60;  // WORM: 1 minute
         nLastPOWBlock = 300;
         nMaturity = 15;
         nMasternodeCountDrift = 4;
@@ -310,17 +310,17 @@ public:
         vFixedSeeds.clear();
         vSeeds.clear();
 
-        // Testnet Crypto Dezire Cash addresses start with 'y'
+        // Testnet WORM addresses start with 'y'
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 65);
-        // Testnet Crypto Dezire Cash script addresses start with '8' or '9'
+        // Testnet WORM script addresses start with '8' or '9'
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 125);
-        // Testnet private keys start with '9' or 'c' (Crypto Dezire Cash defaults)
+        // Testnet private keys start with '9' or 'c' (WORM defaults)
         base58Prefixes[SECRET_KEY] = std::vector<unsigned char>(1, 177); 
-        // Testnet cryptodezirecash BIP32 pubkeys start with 'DRKV'
+        // Testnet worm BIP32 pubkeys start with 'DRKV'
         base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x3a)(0x80)(0x61)(0xa0).convert_to_container<std::vector<unsigned char> >();
-        // Testnet cryptodezirecash BIP32 prvkeys start with 'DRKP'
+        // Testnet worm BIP32 prvkeys start with 'DRKP'
         base58Prefixes[EXT_SECRET_KEY] = boost::assign::list_of(0x3a)(0x80)(0x58)(0x37).convert_to_container<std::vector<unsigned char> >();
-        // Testnet cryptodezirecash BIP44 coin type is '1' (All coin's testnet default)
+        // Testnet worm BIP44 coin type is '1' (All coin's testnet default)
         base58Prefixes[EXT_COIN_TYPE] = boost::assign::list_of(0x80)(0x00)(0x00)(0x01).convert_to_container<std::vector<unsigned char> >();
 
         convertSeed6(vFixedSeeds, pnSeed6_test, ARRAYLEN(pnSeed6_test));
@@ -367,12 +367,12 @@ public:
         nRejectBlockOutdatedMajority = 950;
         nToCheckBlockUpgradeMajority = 1000;
         nMinerThreads = 1;
-        nTargetTimespan = 24 * 60 * 60;         // Crypto Dezire Cash: 1 day
-        nTargetSpacing = 1 * 60;                // Crypto Dezire Cash: 1 minutes
+        nTargetTimespan = 24 * 60 * 60;         // WORM: 1 day
+        nTargetSpacing = 1 * 60;                // WORM: 1 minutes
         bnProofOfWorkLimit = ~uint256(0) >> 1;
         genesis.nTime = 1518696183;             // GMT: Thursday, 15. February 2018 12:03:03
         genesis.nBits = 0x207fffff;
-        genesis.nNonce = 1;                // hex 57 47 52 in text = CDZC
+        genesis.nNonce = 1;                // hex 57 47 52 in text = WORM
         nStakeInputMinimal = 20 * COIN;
 
         hashGenesisBlock = genesis.GetHash();

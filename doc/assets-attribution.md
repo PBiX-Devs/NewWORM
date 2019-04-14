@@ -82,18 +82,18 @@ Everaldo (Everaldo Coelho)
 -----------------------
 
 ### Info
-* Designer: Crypto Dezire CashDevs
+* Designer: WORMDevs
 * License: Oxygen icon theme is dual licensed. You may copy it under the Creative Common Attribution-ShareAlike 3.0 License or the GNU Library General Public License.
 * Site: [http://techbase.kde.org/Projects/Oxygen](http://techbase.kde.org/Projects/Oxygen)
 
 ### Assets Used
 	src/qt/res/icons/debugwindow.png
 
-Crypto Dezire CashTor, XXXX
+WORMTor, XXXX
 -----------------------
 
 ### Info
-* Designer: Crypto Dezire Cash Tor (based on the original bitcoin, dash and pivx logos from Bitboy, Jonas Schnelli and others)
+* Designer: WORM Tor (based on the original bitcoin, dash and pivx logos from Bitboy, Jonas Schnelli and others)
 * License: MIT
 
 ### Assets Used
@@ -127,15 +127,15 @@ Crypto Dezire CashTor, XXXX
 	src/qt/icons/transaction2.png, src/qt/icons/transaction_conflicted.png,
 	src/qt/icons/tx_inout.png, src/qt/icons/tx_input.png,
 	src/qt/icons/tx_mined.png, src/qt/icons/tx_output.png,
-	src/qt/icons/unit_mcryptodezirecash.png, src/qt/icons/unit_tmcryptodezirecash.png,
-	src/qt/icons/unit_tucryptodezirecash.png, src/qt/icons/unit_tcryptodezirecash.png,
-	src/qt/icons/unit_ucryptodezirecash.png, src/qt/icons/unit_cryptodezirecash.png,
+	src/qt/icons/unit_mworm.png, src/qt/icons/unit_tmworm.png,
+	src/qt/icons/unit_tuworm.png, src/qt/icons/unit_tworm.png,
+	src/qt/icons/unit_uworm.png, src/qt/icons/unit_worm.png,
 	src/qt/images/about.png, src/qt/images/downArrow_dark.png,
 	src/qt/images/downArrow_small_dark.png, src/qt/images/downArrow_small.png,
 	src/qt/images/leftArrow_small_dark.png, src/qt/images/qtreeview_selected.png,
 	src/qt/images/rightArrow_small_dark.png, src/qt/images/splash.png,
 	src/qt/images/splash_testnet.png, src/qt/images/upArrow_small_dark.png,
-	src/qt/images/upArrow_small.png, src/qt/images/cryptodezirecash_logo_horizontal.png,
+	src/qt/images/upArrow_small.png, src/qt/images/worm_logo_horizontal.png,
 	src/qt/images/walletFrame_bg.png, src/qt/images/walletFrame.png,
 	src/qt/movies/spinner-000.png, src/qt/movies/spinner-001.png,
 	src/qt/movies/spinner-002.png, src/qt/movies/spinner-003.png,

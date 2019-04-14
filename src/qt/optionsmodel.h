@@ -1,6 +1,6 @@
 // Copyright (c) 2011-2013 The Bitcoin developers
 // Copyright (c) 2017-2018 The PIVX developers
-// Copyright (c) 2018 The Crypto Dezire Cash developers
+// Copyright (c) 2018 The WORM developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -50,7 +50,7 @@ public:
         ZeromintPrefDenom,   // int
         HideZeroBalances,    // bool
         HideOrphans,    // bool
-        AnonymizeCryptoDezireCashAmount, //int
+        AnonymizeWORMAmount, //int
         ShowMasternodesTab,  // bool
         Listen,              // bool
         StakeSplitThreshold, // int
@@ -103,7 +103,7 @@ signals:
     void zeromintEnableChanged(bool);
     void zeromintPercentageChanged(int);
     void preferredDenomChanged(int);
-    void anonymizeCryptoDezireCashAmountChanged(int);
+    void anonymizeWORMAmountChanged(int);
     void coinControlFeaturesChanged(bool);
     void hideZeroBalancesChanged(bool);
     void hideOrphansChanged(bool);

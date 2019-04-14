@@ -1,10 +1,10 @@
 // Copyright (c) 2017 The PIVX developers
-// Copyright (c) 2018 The Crypto Dezire Cash developers
+// Copyright (c) 2018 The WORM developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef CRYPTODEZIRECASH_BLOCKSIGNATURE_H
-#define CRYPTODEZIRECASH_BLOCKSIGNATURE_H
+#ifndef WORM_BLOCKSIGNATURE_H
+#define WORM_BLOCKSIGNATURE_H
 
 #include "key.h"
 #include "primitives/block.h"
@@ -14,4 +14,4 @@ bool SignBlockWithKey(CBlock& block, const CKey& key);
 bool SignBlock(CBlock& block, const CKeyStore& keystore);
 bool CheckBlockSignature(const CBlock& block);
 
-#endif //CRYPTODEZIRECASH_BLOCKSIGNATURE_H
+#endif //WORM_BLOCKSIGNATURE_H

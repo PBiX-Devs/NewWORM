@@ -1,10 +1,10 @@
 // Copyright (c) 2017-2018 The PIVX developers
-// Copyright (c) 2018 The Crypto Dezire Cash developers
+// Copyright (c) 2018 The WORM developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef CRYPTODEZIRECASH_STAKEINPUT_H
-#define CRYPTODEZIRECASH_STAKEINPUT_H
+#ifndef WORM_STAKEINPUT_H
+#define WORM_STAKEINPUT_H
 
 class CKeyStore;
 class CWallet;
@@ -23,15 +23,15 @@ public:
     virtual CAmount GetValue() = 0;
     virtual bool CreateTxOuts(CWallet* pwallet, vector<CTxOut>& vout, CAmount nTotal) = 0;
     virtual bool GetModifier(uint64_t& nStakeModifier) = 0;
-    virtual bool IsZCDZC() = 0;
+    virtual bool IsZWORM() = 0;
     virtual CDataStream GetUniqueness() = 0;
 };
 
 
-// zCDZCStake can take two forms
+// zWORMStake can take two forms
 // 1) the stake candidate, which is a zcmint that is attempted to be staked
-// 2) a staked zcdzc, which is a zcspend that has successfully staked
-class CZCdzcStake : public CStakeInput
+// 2) a staked zworm, which is a zcspend that has successfully staked
+class zWormStake : public CStakeInput
 {
 private:
     uint32_t nChecksum;
@@ -40,7 +40,7 @@ private:
     uint256 hashSerial;
 
 public:
-    explicit CZCdzcStake(libzerocoin::CoinDenomination denom, const uint256& hashSerial)
+    explicit zWormStake(libzerocoin::CoinDenomination denom, const uint256& hashSerial)
     {
         this->denom = denom;
         this->hashSerial = hashSerial;
@@ -48,7 +48,7 @@ public:
         fMint = true;
     }
 
-    explicit CZCdzcStake(const libzerocoin::CoinSpend& spend);
+    explicit zWormStake(const libzerocoin::CoinSpend& spend);
 
     CBlockIndex* GetIndexFrom() override;
     bool GetTxFrom(CTransaction& tx) override;
@@ -58,7 +58,7 @@ public:
     bool CreateTxIn(CWallet* pwallet, CTxIn& txIn, uint256 hashTxOut = 0) override;
     bool CreateTxOuts(CWallet* pwallet, vector<CTxOut>& vout, CAmount nTotal) override;
     bool MarkSpent(CWallet* pwallet, const uint256& txid);
-    bool IsZCDZC() override { return true; }
+    bool IsZWORM() override { return true; }
     int GetChecksumHeightFromMint();
     int GetChecksumHeightFromSpend();
     uint32_t GetChecksum();
@@ -84,8 +84,8 @@ public:
     CDataStream GetUniqueness() override;
     bool CreateTxIn(CWallet* pwallet, CTxIn& txIn, uint256 hashTxOut = 0) override;
     bool CreateTxOuts(CWallet* pwallet, vector<CTxOut>& vout, CAmount nTotal) override;
-    bool IsZCDZC() override { return false; }
+    bool IsZWORM() override { return false; }
 };
 
 
-#endif //CRYPTODEZIRECASH_STAKEINPUT_H
+#endif //WORM_STAKEINPUT_H

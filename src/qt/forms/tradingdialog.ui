@@ -181,7 +181,7 @@
       <string>Asks</string>
      </property>
     </widget>
-    <widget class="QLabel" name="CDZCSupply">
+    <widget class="QLabel" name="WORMSupply">
      <property name="geometry">
       <rect>
        <x>540</x>
@@ -197,7 +197,7 @@
       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
      </property>
     </widget>
-    <widget class="QLabel" name="CDZCDemand">
+    <widget class="QLabel" name="WORMDemand">
      <property name="geometry">
       <rect>
        <x>160</x>
@@ -432,7 +432,7 @@
     <attribute name="title">
      <string>Buy</string>
     </attribute>
-    <widget class="QPushButton" name="BuyCDZC">
+    <widget class="QPushButton" name="BuyWORM">
      <property name="geometry">
       <rect>
        <x>30</x>
@@ -442,10 +442,10 @@
       </rect>
      </property>
      <property name="text">
-      <string>Buy CDZC</string>
+      <string>Buy WORM</string>
      </property>
      <property name="icon">
-      <iconset resource="../cryptodezirecash.qrc">
+      <iconset resource="../worm.qrc">
        <normaloff>:/icons/bitcoin</normaloff>:/icons/bitcoin</iconset>
      </property>
     </widget>
@@ -512,7 +512,7 @@
       </rect>
      </property>
      <property name="text">
-      <string>CDZC</string>
+      <string>WORM</string>
      </property>
     </widget>
     <widget class="QLabel" name="label_5">
@@ -1704,10 +1704,10 @@
       </rect>
      </property>
      <property name="text">
-      <string>CDZC</string>
+      <string>WORM</string>
      </property>
     </widget>
-    <widget class="QLineEdit" name="UnitsInputCDZC">
+    <widget class="QLineEdit" name="UnitsInputWORM">
      <property name="geometry">
       <rect>
        <x>310</x>
@@ -1741,7 +1741,7 @@
       </font>
      </property>
     </widget>
-    <widget class="QPushButton" name="SellCDZCBTN">
+    <widget class="QPushButton" name="SellWORMBTN">
      <property name="geometry">
       <rect>
        <x>30</x>
@@ -1751,10 +1751,10 @@
       </rect>
      </property>
      <property name="text">
-      <string>Sell CDZC</string>
+      <string>Sell WORM</string>
      </property>
      <property name="icon">
-      <iconset resource="../cryptodezirecash">
+      <iconset resource="../worm">
        <normaloff>:/icons/bitcoin</normaloff>:/icons/bitcoin</iconset>
      </property>
     </widget>
@@ -1777,12 +1777,12 @@
          </font>
         </property>
         <property name="text">
-         <string>CDZC Available:</string>
+         <string>WORM Available:</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QLabel" name="CDZCAvailableLabel">
+       <widget class="QLabel" name="WORMAvailableLabel">
         <property name="palette">
          <palette>
           <active>
@@ -2213,7 +2213,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QLabel" name="labelCDZC">
+       <widget class="QLabel" name="labelWORM">
         <property name="font">
          <font>
           <weight>75</weight>
@@ -2221,7 +2221,7 @@
          </font>
         </property>
         <property name="text">
-         <string>CDZC</string>
+         <string>WORM</string>
         </property>
        </widget>
       </item>
@@ -2733,7 +2733,7 @@
       <string>TextLabel</string>
      </property>
     </widget>
-    <widget class="QLabel" name="CDZCBalanceLabel">
+    <widget class="QLabel" name="WORMBalanceLabel">
      <property name="geometry">
       <rect>
        <x>150</x>
@@ -2762,7 +2762,7 @@
       </font>
      </property>
      <property name="text">
-      <string>CDZC Balance:</string>
+      <string>WORM Balance:</string>
      </property>
     </widget>
     <widget class="QLabel" name="label_12">
@@ -2784,7 +2784,7 @@
       <string>BTC Balance:</string>
      </property>
     </widget>
-    <widget class="QLabel" name="CDZCAvailableLabel_2">
+    <widget class="QLabel" name="WORMAvailableLabel_2">
      <property name="geometry">
       <rect>
        <x>150</x>
@@ -2813,7 +2813,7 @@
       </font>
      </property>
      <property name="text">
-      <string>CDZC Available:</string>
+      <string>WORM Available:</string>
      </property>
     </widget>
     <widget class="QLabel" name="label_14">
@@ -2832,10 +2832,10 @@
       </font>
      </property>
      <property name="text">
-      <string>CDZC Pending:</string>
+      <string>WORM Pending:</string>
      </property>
     </widget>
-    <widget class="QLabel" name="CDZCPendingLabel">
+    <widget class="QLabel" name="WORMPendingLabel">
      <property name="geometry">
       <rect>
        <x>150</x>
@@ -2928,7 +2928,7 @@
       </font>
      </property>
      <property name="text">
-      <string>Bittrex CDZC Deposit Address:</string>
+      <string>Bittrex WORM Deposit Address:</string>
      </property>
     </widget>
     <widget class="QPushButton" name="GenDepositBTN">
@@ -2941,10 +2941,10 @@
       </rect>
      </property>
      <property name="text">
-      <string>Generate Crypto Dezire Cash Deposit Address</string>
+      <string>Generate WORM Deposit Address</string>
      </property>
      <property name="icon">
-      <iconset resource="../cryptodezirecash.qrc">
+      <iconset resource="../worm.qrc">
        <normaloff>:/icons/bitcoin</normaloff>:/icons/bitcoin</iconset>
      </property>
     </widget>
@@ -3155,7 +3155,7 @@
        <string notr="true">border: 1px solid #61696c;margin-left:4px;</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="btnConvertCrypto Dezire Cash">
+     <widget class="QPushButton" name="btnConvertWORM">
       <property name="geometry">
        <rect>
         <x>260</x>
@@ -3206,7 +3206,7 @@
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap resource="../cryptodezirecash.qrc">:/icons/transaction_1</pixmap>
+       <pixmap resource="../worm.qrc">:/icons/transaction_1</pixmap>
       </property>
       <property name="scaledContents">
        <bool>true</bool>
@@ -3253,7 +3253,7 @@
       <string>Update API Keys</string>
      </property>
      <property name="icon">
-      <iconset resource="../cryptodezirecash.qrc">
+      <iconset resource="../worm.qrc">
        <normaloff>:/icons/bitcoin</normaloff>:/icons/bitcoin</iconset>
      </property>
     </widget>
@@ -3408,7 +3408,7 @@
   </widget>
  </widget>
  <resources>
-  <include location="../cryptodezirecash.qrc"/>
+  <include location="../worm.qrc"/>
  </resources>
  <connections/>
 </ui>

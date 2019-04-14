@@ -1,6 +1,6 @@
 // Copyright (c) 2012-2017 The Bitcoin Core developers
 // Copyright (c) 2016-2017 The PIVX developers
-// Copyright (c) 2018 The Crypto Dezire Cash developers
+// Copyright (c) 2018 The WORM developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -10,10 +10,10 @@
 
 /**
  * Name of client reported in the 'version' message. Report the same name
- * for both cryptodezirecashd and cryptodezirecash-qt, to make it harder for attackers to
+ * for both wormd and worm-qt, to make it harder for attackers to
  * target servers or GUI users specifically.
  */
-const std::string CLIENT_NAME("Crypto Dezire Cash Core");
+const std::string CLIENT_NAME("WORM Core");
 
 /**
  * Client version number

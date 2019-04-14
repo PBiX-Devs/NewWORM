@@ -1,5 +1,5 @@
 // Copyright (c) 2017-2018 The PIVX developers
-// Copyright (c) 2018 The Crypto Dezire Cash developers
+// Copyright (c) 2018 The WORM developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -11,7 +11,7 @@
 #include "init.h"
 #include "spork.h"
 #include "accumulatorcheckpoints.h"
-#include "zcdzcchain.h"
+#include "zwormchain.h"
 
 using namespace libzerocoin;
 
@@ -305,7 +305,7 @@ bool InvalidCheckpointRange(int nHeight)
 bool ValidateAccumulatorCheckpoint(const CBlock& block, CBlockIndex* pindex, AccumulatorMap& mapAccumulators)
 {
     //V1 accumulators are completely phased out by the time this code hits the public and begins generating new checkpoints
-    //It is VERY IMPORTANT that when this is being run and height < v2_start, then zCDZC need to be disabled at the same time!!
+    //It is VERY IMPORTANT that when this is being run and height < v2_start, then zWORM need to be disabled at the same time!!
     if (pindex->nHeight < Params().Zerocoin_Block_V2_Start() || fVerifyingBlocks)
         return true;
 

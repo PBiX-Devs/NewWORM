@@ -1,12 +1,12 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2014 The Bitcoin developers
 // Copyright (c) 2015-2018 The PIVX developers
-// Copyright (c) 2018 The Crypto Dezire Cash developers
+// Copyright (c) 2018 The WORM developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef CRYPTODEZIRECASH_SERIALIZE_H
-#define CRYPTODEZIRECASH_SERIALIZE_H
+#ifndef WORM_SERIALIZE_H
+#define WORM_SERIALIZE_H
 
 #include <algorithm>
 #include <assert.h>
@@ -966,4 +966,4 @@ public:
     }
 };
 
-#endif // CRYPTODEZIRECASH_SERIALIZE_H
+#endif // WORM_SERIALIZE_H

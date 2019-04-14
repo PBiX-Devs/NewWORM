@@ -1,10 +1,10 @@
 // Copyright (c) 2017 The PIVX developers
-// Copyright (c) 2018 The Crypto Dezire Cash developers
+// Copyright (c) 2018 The WORM developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef CRYPTODEZIRECASH_CSPORKDB_H
-#define CRYPTODEZIRECASH_CSPORKDB_H
+#ifndef WORM_CSPORKDB_H
+#define WORM_CSPORKDB_H
 
 #include <boost/filesystem/path.hpp>
 #include "leveldbwrapper.h"
@@ -26,4 +26,4 @@ public:
 };
 
 
-#endif //CRYPTODEZIRECASH_CSPORKDB_H
+#endif //WORM_CSPORKDB_H

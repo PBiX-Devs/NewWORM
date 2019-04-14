@@ -6,7 +6,7 @@
 # Distributed under the MIT/X11 software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 #
-# Copyright (c) 2018 The Crypto Dezire Cash developers
+# Copyright (c) 2018 The WORM developers
 
 from __future__ import print_function, division
 import json

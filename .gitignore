@@ -7,12 +7,12 @@ reset-files.bash
 *.tar.gz
 
 *.exe
-src/cryptodezirecash
-src/cryptodezirecashd
-src/cryptodezirecash-cli
-src/cryptodezirecash-tx
-src/test/test_cryptodezirecash
-src/qt/test/test_cryptodezirecash-qt
+src/worm
+src/wormd
+src/worm-cli
+src/worm-tx
+src/test/test_worm
+src/qt/test/test_worm-qt
 
 # autoreconf
 Makefile.in
@@ -38,8 +38,8 @@ confdefs.h
 conftest.cpp
 conftest.err
 libtool
-src/config/cryptodezirecash-config.h
-src/config/cryptodezirecash-config.h.in
+src/config/worm-config.h
+src/config/worm-config.h.in
 src/config/stamp-h1
 share/setup.nsi
 share/qt/Info.plist
@@ -65,7 +65,7 @@ src/qt/test/moc*.cpp
 *.o
 *.o-*
 *.patch
-.cryptodezirecash
+.worm
 *.a
 *.pb.cc
 *.pb.h
@@ -84,13 +84,13 @@ src/qt/test/moc*.cpp
 # Compilation and Qt preprocessor part
 *.qm
 Makefile
-cryptodezirecash-qt
-CRYPTODEZIRECASH-Qt.app
+worm-qt
+WORM-Qt.app
 background.tiff*
 
 # Unit-tests
 Makefile.test
-cryptodezirecash-qt_test
+worm-qt_test
 src/test/buildenv.py
 
 # Resources cpp
@@ -106,7 +106,7 @@ build
 #lcov
 *.gcno
 /*.info
-test_cryptodezirecash.coverage/
+test_worm.coverage/
 total.coverage/
 coverage_percent.txt
 

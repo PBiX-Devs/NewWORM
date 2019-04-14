@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # Copyright (c) 2014-2018 The Bitcoin developers
-# Copyright (c) 2018 The Crypto Dezire Cash developers
+# Copyright (c) 2018 The WORM developers
 '''
 Run this script inside of src/ and it will look for all the files
 that were changed this year that still have the last year in the

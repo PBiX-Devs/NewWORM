@@ -1,7 +1,7 @@
 // Copyright (c) 2011-2014 The Bitcoin developers
 // Copyright (c) 2014-2015 The Dash developers
 // Copyright (c) 2015-2018 The PIVX developers
-// Copyright (c) 2018 The Crypto Dezire Cash developers
+// Copyright (c) 2018 The WORM developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -291,7 +291,7 @@ RPCConsole::RPCConsole(QWidget* parent) : QDialog(parent, Qt::WindowSystemMenuHi
     ui->openSSLVersion->setText(SSLeay_version(SSLEAY_VERSION));
 #ifdef ENABLE_WALLET
     std::string strPathCustom = GetArg("-backuppath", "");
-    std::string strzCDZCPathCustom = GetArg("-zcdzcbackuppath", "");
+    std::string strzWORMPathCustom = GetArg("-zwormbackuppath", "");
     int nCustomBackupThreshold = GetArg("-custombackupthreshold", DEFAULT_CUSTOMBACKUPTHRESHOLD);
 
     if(!strPathCustom.empty()) {
@@ -300,13 +300,13 @@ RPCConsole::RPCConsole(QWidget* parent) : QDialog(parent, Qt::WindowSystemMenuHi
         ui->wallet_custombackuppath->show();
     }
 
-    if(!strzCDZCPathCustom.empty()) {
-        ui->wallet_customzcdzcbackuppath->setText(QString::fromStdString(strzCDZCPathCustom));
-        ui->wallet_customzcdzcbackuppath_label->setVisible(true);
-        ui->wallet_customzcdzcbackuppath->setVisible(true);
+    if(!strzWORMPathCustom.empty()) {
+        ui->wallet_customzwormbackuppath->setText(QString::fromStdString(strzWORMPathCustom));
+        ui->wallet_customzwormbackuppath_label->setVisible(true);
+        ui->wallet_customzwormbackuppath->setVisible(true);
     }
 
-    if((!strPathCustom.empty() || !strzCDZCPathCustom.empty()) && nCustomBackupThreshold > 0) {
+    if((!strPathCustom.empty() || !strzWORMPathCustom.empty()) && nCustomBackupThreshold > 0) {
         ui->wallet_custombackupthreshold->setText(QString::fromStdString(std::to_string(nCustomBackupThreshold)));
         ui->wallet_custombackupthreshold_label->setVisible(true);
         ui->wallet_custombackupthreshold->setVisible(true);
@@ -642,7 +642,7 @@ void RPCConsole::clear()
     QString clsKey = "Ctrl-L";
 #endif
 
-    message(CMD_REPLY, (tr("Welcome to the Crypto Dezire Cash RPC console.") + "<br>" +
+    message(CMD_REPLY, (tr("Welcome to the WORM RPC console.") + "<br>" +
                         tr("Use up and down arrows to navigate history, and %1 to clear screen.").arg("<b>"+clsKey+"</b>") + "<br>" +
                         tr("Type <b>help</b> for an overview of available commands.") +
                         "<br><span class=\"secwarning\"><br>" +

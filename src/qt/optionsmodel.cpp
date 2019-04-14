@@ -1,12 +1,12 @@
 // Copyright (c) 2011-2014 The Bitcoin developers
 // Copyright (c) 2014-2015 The Dash developers
 // Copyright (c) 2015-2018 The PIVX developers
-// Copyright (c) 2018 The Crypto Dezire Cash developers
+// Copyright (c) 2018 The WORM developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #if defined(HAVE_CONFIG_H)
-#include "config/cryptodezirecash-config.h"
+#include "config/worm-config.h"
 #endif
 
 #include "optionsmodel.h"
@@ -63,7 +63,7 @@ void OptionsModel::Init()
 
     // Display
     if (!settings.contains("nDisplayUnit"))
-        settings.setValue("nDisplayUnit", BitcoinUnits::CDZC);
+        settings.setValue("nDisplayUnit", BitcoinUnits::WORM);
     nDisplayUnit = settings.value("nDisplayUnit").toInt();
 
     if (!settings.contains("strThirdPartyTxUrls"))
@@ -94,10 +94,10 @@ void OptionsModel::Init()
         settings.setValue("nPreferredDenom", 0);
     nPreferredDenom = settings.value("nPreferredDenom", "0").toLongLong();
 
-    if (!settings.contains("nAnonymizeCryptoDezireCashAmount"))
-        settings.setValue("nAnonymizeCryptoDezireCashAmount", 1000);
+    if (!settings.contains("nAnonymizeWORMAmount"))
+        settings.setValue("nAnonymizeWORMAmount", 1000);
 
-    nAnonymizeCryptoDezireCashAmount = settings.value("nAnonymizeCryptoDezireCashAmount").toLongLong();
+    nAnonymizeWORMAmount = settings.value("nAnonymizeWORMAmount").toLongLong();
 
     if (!settings.contains("fShowMasternodesTab"))
         settings.setValue("fShowMasternodesTab", masternodeConfig.getCount());
@@ -171,8 +171,8 @@ void OptionsModel::Init()
         SoftSetArg("-zeromintpercentage", settings.value("nZeromintPercentage").toString().toStdString());
     if (settings.contains("nPreferredDenom"))
         SoftSetArg("-preferredDenom", settings.value("nPreferredDenom").toString().toStdString());
-    if (settings.contains("nAnonymizeCryptoDezireCashAmount"))
-        SoftSetArg("-anonymizecryptodezirecashamount", settings.value("nAnonymizeCryptoDezireCashAmount").toString().toStdString());
+    if (settings.contains("nAnonymizeWORMAmount"))
+        SoftSetArg("-anonymizewormamount", settings.value("nAnonymizeWORMAmount").toString().toStdString());
 
     language = settings.value("language").toString();
 }
@@ -183,7 +183,7 @@ void OptionsModel::Reset()
 
     // Remove all entries from our QSettings object
     settings.clear();
-    resetSettings = true; // Needed in cryptodezirecash.cpp during shotdown to also remove the window positions
+    resetSettings = true; // Needed in worm.cpp during shotdown to also remove the window positions
 
     // default setting for OptionsModel::StartAtStartup - disabled
     if (GUIUtil::GetStartOnSystemStartup())
@@ -265,8 +265,8 @@ QVariant OptionsModel::data(const QModelIndex& index, int role) const
             return QVariant(nZeromintPercentage);
         case ZeromintPrefDenom:
             return QVariant(nPreferredDenom);
-        case AnonymizeCryptoDezireCashAmount:
-            return QVariant(nAnonymizeCryptoDezireCashAmount);
+        case AnonymizeWORMAmount:
+            return QVariant(nAnonymizeWORMAmount);
         case Listen:
             return settings.value("fListen");
         default:
@@ -399,10 +399,10 @@ bool OptionsModel::setData(const QModelIndex& index, const QVariant& value, int 
             settings.setValue("fHideOrphans", fHideOrphans);
             emit hideOrphansChanged(fHideOrphans);
             break;
-        case AnonymizeCryptoDezireCashAmount:
-            nAnonymizeCryptoDezireCashAmount = value.toInt();
-            settings.setValue("nAnonymizeCryptoDezireCashAmount", nAnonymizeCryptoDezireCashAmount);
-            emit anonymizeCryptoDezireCashAmountChanged(nAnonymizeCryptoDezireCashAmount);
+        case AnonymizeWORMAmount:
+            nAnonymizeWORMAmount = value.toInt();
+            settings.setValue("nAnonymizeWORMAmount", nAnonymizeWORMAmount);
+            emit anonymizeWORMAmountChanged(nAnonymizeWORMAmount);
             break;
         case CoinControlFeatures:
             fCoinControlFeatures = value.toBool();

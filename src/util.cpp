@@ -2,12 +2,12 @@
 // Copyright (c) 2009-2014 The Bitcoin developers
 // Copyright (c) 2014-2015 The Dash developers
 // Copyright (c) 2015-2018 The PIVX developers
-// Copyright (c) 2018 The Crypto Dezire Cash developers
+// Copyright (c) 2018 The WORM developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #if defined(HAVE_CONFIG_H)
-#include "config/cryptodezirecash-config.h"
+#include "config/worm-config.h"
 #endif
 
 #include "util.h"
@@ -119,7 +119,7 @@ int nZeromintPercentage = 10;
 int nPreferredDenom = 0;
 const int64_t AUTOMINT_DELAY = (60 * 5); // Wait at least 5 minutes until Automint starts
 
-int nAnonymizeCryptoDezireCashAmount = 1000;
+int nAnonymizeWORMAmount = 1000;
 int nLiquidityProvider = 0;
 /** Spork enforcement enabled time */
 int64_t enforceMasternodePaymentsTime = 4085657524;
@@ -236,8 +236,8 @@ bool LogAcceptCategory(const char* category)
             const vector<string>& categories = mapMultiArgs["-debug"];
             ptrCategory.reset(new set<string>(categories.begin(), categories.end()));
             // thread_specific_ptr automatically deletes the set when the thread ends.
-            // "cryptodezirecash" is a composite category enabling all Crypto Dezire Cash-related debug output
-            if (ptrCategory->count(string("cryptodezirecash"))) {
+            // "worm" is a composite category enabling all WORM-related debug output
+            if (ptrCategory->count(string("worm"))) {
                 ptrCategory->insert(string("obfuscation"));
                 ptrCategory->insert(string("swiftx"));
                 ptrCategory->insert(string("masternode"));
@@ -402,7 +402,7 @@ static std::string FormatException(std::exception* pex, const char* pszThread)
     char pszModule[MAX_PATH] = "";
     GetModuleFileNameA(NULL, pszModule, sizeof(pszModule));
 #else
-    const char* pszModule = "cryptodezirecash";
+    const char* pszModule = "worm";
 #endif
     if (pex)
         return strprintf(
@@ -423,13 +423,13 @@ void PrintExceptionContinue(std::exception* pex, const char* pszThread)
 boost::filesystem::path GetDefaultDataDir()
 {
     namespace fs = boost::filesystem;
-// Windows < Vista: C:\Documents and Settings\Username\Application Data\CryptoDezireCash
-// Windows >= Vista: C:\Users\Username\AppData\Roaming\CryptoDezireCash
-// Mac: ~/Library/Application Support/CryptoDezireCash
-// Unix: ~/.cryptodezirecash
+// Windows < Vista: C:\Documents and Settings\Username\Application Data\WORM
+// Windows >= Vista: C:\Users\Username\AppData\Roaming\WORM
+// Mac: ~/Library/Application Support/WORM
+// Unix: ~/.worm
 #ifdef WIN32
     // Windows
-    return GetSpecialFolderPath(CSIDL_APPDATA) / "CryptoDezireCash";
+    return GetSpecialFolderPath(CSIDL_APPDATA) / "WORM";
 #else
     fs::path pathRet;
     char* pszHome = getenv("HOME");
@@ -441,10 +441,10 @@ boost::filesystem::path GetDefaultDataDir()
     // Mac
     pathRet /= "Library/Application Support";
     TryCreateDirectory(pathRet);
-    return pathRet / "CryptoDezireCash";
+    return pathRet / "WORM";
 #else
     // Unix
-    return pathRet / ".cryptodezirecash";
+    return pathRet / ".worm";
 #endif
 #endif
 }
@@ -491,7 +491,7 @@ void ClearDatadirCache()
 
 boost::filesystem::path GetConfigFile()
 {
-    boost::filesystem::path pathConfigFile(GetArg("-conf", "cryptodezirecash.conf"));
+    boost::filesystem::path pathConfigFile(GetArg("-conf", "worm.conf"));
     if (!pathConfigFile.is_complete())
         pathConfigFile = GetDataDir(false) / pathConfigFile;
 
@@ -559,7 +559,7 @@ void ReadConfigFile(map<string, string>& mapSettingsRet,
 #ifndef WIN32
 boost::filesystem::path GetPidFile()
 {
-    boost::filesystem::path pathPidFile(GetArg("-pid", "cryptodezirecashd.pid"));
+    boost::filesystem::path pathPidFile(GetArg("-pid", "wormd.pid"));
     if (!pathPidFile.is_complete()) pathPidFile = GetDataDir() / pathPidFile;
     return pathPidFile;
 }

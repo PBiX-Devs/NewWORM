@@ -1,5 +1,5 @@
 // Copyright (c) 2017-2018 The PIVX developers
-// Copyright (c) 2018 The Crypto Dezire Cash developers
+// Copyright (c) 2018 The WORM developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -29,7 +29,7 @@ BOOST_AUTO_TEST_CASE(zerocoin_spend_test)
 
     bool fFirstRun;
     cWallet.LoadWallet(fFirstRun);
-    cWallet.zcdzcTracker = unique_ptr<CzCDZCTracker>(new CzCDZCTracker(cWallet.strWalletFile));
+    cWallet.zwormTracker = unique_ptr<CzWORMTracker>(new CzWORMTracker(cWallet.strWalletFile));
     CMutableTransaction tx;
     CWalletTx* wtx = new CWalletTx(&cWallet, tx);
     bool fMintChange=true;
@@ -42,7 +42,7 @@ BOOST_AUTO_TEST_CASE(zerocoin_spend_test)
     CZerocoinSpendReceipt receipt;
     cWallet.SpendZerocoin(nAmount, nSecurityLevel, *wtx, receipt, vMints, fMintChange, fMinimizeChange);
 
-    BOOST_CHECK_MESSAGE(receipt.GetStatus() == ZCDZC_TRX_FUNDS_PROBLEMS, "Failed Invalid Amount Check");
+    BOOST_CHECK_MESSAGE(receipt.GetStatus() == ZWORM_TRX_FUNDS_PROBLEMS, "Failed Invalid Amount Check");
 
     nAmount = 1;
     CZerocoinSpendReceipt receipt2;
@@ -51,7 +51,7 @@ BOOST_AUTO_TEST_CASE(zerocoin_spend_test)
     // if using "wallet.dat", instead of "unlocked.dat" need this
     /// BOOST_CHECK_MESSAGE(vString == "Error: Wallet locked, unable to create transaction!"," Locked Wallet Check Failed");
 
-    BOOST_CHECK_MESSAGE(receipt2.GetStatus() == ZCDZC_TRX_FUNDS_PROBLEMS, "Failed Invalid Amount Check");
+    BOOST_CHECK_MESSAGE(receipt2.GetStatus() == ZWORM_TRX_FUNDS_PROBLEMS, "Failed Invalid Amount Check");
 
 }
 

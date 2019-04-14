@@ -1,6 +1,6 @@
 // Copyright (c) 2011-2013 The Bitcoin developers
 // Copyright (c) 2017 The PIVX developers
-// Copyright (c) 2018 The Crypto Dezire Cash developers
+// Copyright (c) 2018 The WORM developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -123,6 +123,6 @@ int TransactionFilterProxy::rowCount(const QModelIndex& parent) const
 bool TransactionFilterProxy::isOrphan(const int status, const int type)
 {
     return ( (type == TransactionRecord::Generated || type == TransactionRecord::StakeMint ||
-            type == TransactionRecord::StakeZCDZC || type == TransactionRecord::MNReward)
+            type == TransactionRecord::StakeZWORM || type == TransactionRecord::MNReward)
             && (status == TransactionStatus::Conflicted || status == TransactionStatus::NotAccepted) );
 }

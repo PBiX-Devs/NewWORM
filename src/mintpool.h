@@ -1,10 +1,10 @@
 // Copyright (c) 2017-2018 The PIVX developers
-// Copyright (c) 2018 The Crypto Dezire Cash developers
+// Copyright (c) 2018 The WORM developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef CRYPTODEZIRECASH_MINTPOOL_H
-#define CRYPTODEZIRECASH_MINTPOOL_H
+#ifndef WORM_MINTPOOL_H
+#define WORM_MINTPOOL_H
 
 #include <map>
 #include <list>
@@ -51,4 +51,4 @@ public:
 };
 
 
-#endif //CRYPTODEZIRECASH_MINTPOOL_H
+#endif //WORM_MINTPOOL_H

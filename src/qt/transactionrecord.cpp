@@ -1,7 +1,7 @@
 // Copyright (c) 2011-2014 The Bitcoin developers
 // Copyright (c) 2014-2015 The Dash developers
 // Copyright (c) 2015-2018 The PIVX developers
-// Copyright (c) 2018 The Crypto Dezire Cash developers
+// Copyright (c) 2018 The WORM developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -12,7 +12,7 @@
 #include "swifttx.h"
 #include "timedata.h"
 #include "wallet.h"
-#include "zcdzcchain.h"
+#include "zwormchain.h"
 
 #include <stdint.h>
 
@@ -55,10 +55,10 @@ QList<TransactionRecord> TransactionRecord::decomposeTransaction(const CWallet* 
         if (!wtx.IsZerocoinSpend() && !ExtractDestination(wtx.vout[1].scriptPubKey, address))
             return parts;
 
-        if (wtx.IsZerocoinSpend() && (fZSpendFromMe || wallet->zcdzcTracker->HasMintTx(hash))) {
-            //zCDZC stake reward
+        if (wtx.IsZerocoinSpend() && (fZSpendFromMe || wallet->zwormTracker->HasMintTx(hash))) {
+            //zWORM stake reward
             sub.involvesWatchAddress = false;
-            sub.type = TransactionRecord::StakeZCDZC;
+            sub.type = TransactionRecord::StakeZWORM;
             sub.address = mapValue["zerocoinmint"];
             sub.credit = 0;
             for (const CTxOut& out : wtx.vout) {
@@ -67,7 +67,7 @@ QList<TransactionRecord> TransactionRecord::decomposeTransaction(const CWallet* 
             }
             sub.debit -= wtx.vin[0].nSequence * COIN;
         } else if (isminetype mine = wallet->IsMine(wtx.vout[1])) {
-            // CDZC stake reward
+            // WORM stake reward
             sub.involvesWatchAddress = mine & ISMINE_WATCH_ONLY;
             sub.type = TransactionRecord::StakeMint;
             sub.address = CBitcoinAddress(address).ToString();
@@ -101,7 +101,7 @@ QList<TransactionRecord> TransactionRecord::decomposeTransaction(const CWallet* 
                 isminetype mine = wallet->IsMine(txout);
                 TransactionRecord sub(hash, nTime);
                 sub.involvesWatchAddress = mine & ISMINE_WATCH_ONLY;
-                sub.type = TransactionRecord::ZerocoinSpend_Change_zCdzc;
+                sub.type = TransactionRecord::ZerocoinSpend_Change_zWorm;
                 sub.address = mapValue["zerocoinmint"];
                 if (!fFeeAssigned) {
                     sub.debit -= (wtx.GetZerocoinSpent() - wtx.GetValueOut());
@@ -164,7 +164,7 @@ QList<TransactionRecord> TransactionRecord::decomposeTransaction(const CWallet* 
                 sub.credit = txout.nValue;
                 sub.involvesWatchAddress = mine & ISMINE_WATCH_ONLY;
                 if (ExtractDestination(txout.scriptPubKey, address) && IsMine(*wallet, address)) {
-                    // Received by Crypto Dezire Cash Address
+                    // Received by WORM Address
                     sub.type = TransactionRecord::RecvWithAddress;
                     sub.address = CBitcoinAddress(address).ToString();
                 } else {
@@ -225,7 +225,7 @@ QList<TransactionRecord> TransactionRecord::decomposeTransaction(const CWallet* 
                 sub.type = TransactionRecord::Obfuscated;
                 CTxDestination address;
                 if (ExtractDestination(wtx.vout[0].scriptPubKey, address)) {
-                    // Sent to Crypto Dezire Cash Address
+                    // Sent to WORM Address
                     sub.address = CBitcoinAddress(address).ToString();
                 } else {
                     // Sent to IP, or other non-address transaction like OP_EVAL
@@ -272,7 +272,7 @@ QList<TransactionRecord> TransactionRecord::decomposeTransaction(const CWallet* 
                     //private keys that the change was sent to. Do not display a "sent to" here.
                     if (wtx.IsZerocoinMint())
                         continue;
-                    // Sent to Crypto Dezire Cash Address
+                    // Sent to WORM Address
                     sub.type = TransactionRecord::SendToAddress;
                     sub.address = CBitcoinAddress(address).ToString();
                 } else if (txout.IsZerocoinMint()){
@@ -311,14 +311,14 @@ QList<TransactionRecord> TransactionRecord::decomposeTransaction(const CWallet* 
     return parts;
 }
 
-bool IsZCDZCType(TransactionRecord::Type type)
+bool IsZWORMType(TransactionRecord::Type type)
 {
     switch (type) {
-        case TransactionRecord::StakeZCDZC:
+        case TransactionRecord::StakeZWORM:
         case TransactionRecord::ZerocoinMint:
         case TransactionRecord::ZerocoinSpend:
         case TransactionRecord::RecvFromZerocoinSpend:
-        case TransactionRecord::ZerocoinSpend_Change_zCdzc:
+        case TransactionRecord::ZerocoinSpend_Change_zWorm:
         case TransactionRecord::ZerocoinSpend_FromMe:
             return true;
         default:
@@ -363,7 +363,7 @@ void TransactionRecord::updateStatus(const CWalletTx& wtx)
         }
     }
     // For generated transactions, determine maturity
-    else if (type == TransactionRecord::Generated || type == TransactionRecord::StakeMint || type == TransactionRecord::StakeZCDZC || type == TransactionRecord::MNReward) {
+    else if (type == TransactionRecord::Generated || type == TransactionRecord::StakeMint || type == TransactionRecord::StakeZWORM || type == TransactionRecord::MNReward) {
         if (nBlocksToMaturity > 0) {
             status.status = TransactionStatus::Immature;
             status.matures_in = nBlocksToMaturity;

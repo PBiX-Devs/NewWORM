@@ -2,7 +2,7 @@
 // Copyright (c) 2009-2014 The Bitcoin developers
 // Copyright (c) 2014-2015 The Dash developers
 // Copyright (c) 2015-2018 The PIVX developers
-// Copyright (c) 2018 The Crypto Dezire Cash developers
+// Copyright (c) 2018 The WORM developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -268,11 +268,11 @@ UniValue stop(const UniValue& params, bool fHelp)
     if (fHelp || params.size() > 1)
         throw runtime_error(
             "stop\n"
-            "\nStop Crypto Dezire Cash server.");
+            "\nStop WORM server.");
     // Event loop will exit after current HTTP requests have been handled, so
     // this reply will get back to the client.
     StartShutdown();
-    return "CRYPTODEZIRECASH server stopping";
+    return "WORM server stopping";
 }
 
 
@@ -360,37 +360,37 @@ static const CRPCCommand vRPCCommands[] =
         { "hidden",             "waitforblock",           &waitforblock,           true,  true,  false  },
         { "hidden",             "waitforblockheight",     &waitforblockheight,     true,  true,  false  },
 
-        /* Crypto Dezire Cash features */
-        {"cryptodezirecash", "masternode", &masternode, true, true, false},
-        {"cryptodezirecash", "listmasternodes", &listmasternodes, true, true, false},
-        {"cryptodezirecash", "getmasternodecount", &getmasternodecount, true, true, false},
-        {"cryptodezirecash", "masternodeconnect", &masternodeconnect, true, true, false},
-        {"cryptodezirecash", "createmasternodebroadcast", &createmasternodebroadcast, true, true, false},
-        {"cryptodezirecash", "decodemasternodebroadcast", &decodemasternodebroadcast, true, true, false},
-        {"cryptodezirecash", "relaymasternodebroadcast", &relaymasternodebroadcast, true, true, false},
-        {"cryptodezirecash", "masternodecurrent", &masternodecurrent, true, true, false},
-        {"cryptodezirecash", "masternodedebug", &masternodedebug, true, true, false},
-        {"cryptodezirecash", "startmasternode", &startmasternode, true, true, false},
-        {"cryptodezirecash", "createmasternodekey", &createmasternodekey, true, true, false},
-        {"cryptodezirecash", "getmasternodeoutputs", &getmasternodeoutputs, true, true, false},
-        {"cryptodezirecash", "listmasternodeconf", &listmasternodeconf, true, true, false},
-        {"cryptodezirecash", "getmasternodestatus", &getmasternodestatus, true, true, false},
-        {"cryptodezirecash", "getmasternodewinners", &getmasternodewinners, true, true, false},
-        {"cryptodezirecash", "getmasternodescores", &getmasternodescores, true, true, false},
-        {"cryptodezirecash", "mnbudget", &mnbudget, true, true, false},
-        {"cryptodezirecash", "preparebudget", &preparebudget, true, true, false},
-        {"cryptodezirecash", "submitbudget", &submitbudget, true, true, false},
-        {"cryptodezirecash", "mnbudgetvote", &mnbudgetvote, true, true, false},
-        {"cryptodezirecash", "getbudgetvotes", &getbudgetvotes, true, true, false},
-        {"cryptodezirecash", "getnextsuperblock", &getnextsuperblock, true, true, false},
-        {"cryptodezirecash", "getbudgetprojection", &getbudgetprojection, true, true, false},
-        {"cryptodezirecash", "getbudgetinfo", &getbudgetinfo, true, true, false},
-        {"cryptodezirecash", "mnbudgetrawvote", &mnbudgetrawvote, true, true, false},
-        {"cryptodezirecash", "mnfinalbudget", &mnfinalbudget, true, true, false},
-        {"cryptodezirecash", "checkbudgets", &checkbudgets, true, true, false},
-        {"cryptodezirecash", "mnsync", &mnsync, true, true, false},
-        {"cryptodezirecash", "spork", &spork, true, true, false},
-        {"cryptodezirecash", "getpoolinfo", &getpoolinfo, true, true, false},
+        /* WORM features */
+        {"worm", "masternode", &masternode, true, true, false},
+        {"worm", "listmasternodes", &listmasternodes, true, true, false},
+        {"worm", "getmasternodecount", &getmasternodecount, true, true, false},
+        {"worm", "masternodeconnect", &masternodeconnect, true, true, false},
+        {"worm", "createmasternodebroadcast", &createmasternodebroadcast, true, true, false},
+        {"worm", "decodemasternodebroadcast", &decodemasternodebroadcast, true, true, false},
+        {"worm", "relaymasternodebroadcast", &relaymasternodebroadcast, true, true, false},
+        {"worm", "masternodecurrent", &masternodecurrent, true, true, false},
+        {"worm", "masternodedebug", &masternodedebug, true, true, false},
+        {"worm", "startmasternode", &startmasternode, true, true, false},
+        {"worm", "createmasternodekey", &createmasternodekey, true, true, false},
+        {"worm", "getmasternodeoutputs", &getmasternodeoutputs, true, true, false},
+        {"worm", "listmasternodeconf", &listmasternodeconf, true, true, false},
+        {"worm", "getmasternodestatus", &getmasternodestatus, true, true, false},
+        {"worm", "getmasternodewinners", &getmasternodewinners, true, true, false},
+        {"worm", "getmasternodescores", &getmasternodescores, true, true, false},
+        {"worm", "mnbudget", &mnbudget, true, true, false},
+        {"worm", "preparebudget", &preparebudget, true, true, false},
+        {"worm", "submitbudget", &submitbudget, true, true, false},
+        {"worm", "mnbudgetvote", &mnbudgetvote, true, true, false},
+        {"worm", "getbudgetvotes", &getbudgetvotes, true, true, false},
+        {"worm", "getnextsuperblock", &getnextsuperblock, true, true, false},
+        {"worm", "getbudgetprojection", &getbudgetprojection, true, true, false},
+        {"worm", "getbudgetinfo", &getbudgetinfo, true, true, false},
+        {"worm", "mnbudgetrawvote", &mnbudgetrawvote, true, true, false},
+        {"worm", "mnfinalbudget", &mnfinalbudget, true, true, false},
+        {"worm", "checkbudgets", &checkbudgets, true, true, false},
+        {"worm", "mnsync", &mnsync, true, true, false},
+        {"worm", "spork", &spork, true, true, false},
+        {"worm", "getpoolinfo", &getpoolinfo, true, true, false},
 
 #ifdef ENABLE_WALLET
         /* Wallet */
@@ -457,11 +457,11 @@ static const CRPCCommand vRPCCommands[] =
         {"zerocoin", "exportzerocoins", &exportzerocoins, false, false, true},
         {"zerocoin", "reconsiderzerocoins", &reconsiderzerocoins, false, false, true},
         {"zerocoin", "getspentzerocoinamount", &getspentzerocoinamount, false, false, false},
-        {"zerocoin", "getzcdzcseed", &getzcdzcseed, false, false, true},
-        {"zerocoin", "setzcdzcseed", &setzcdzcseed, false, false, true},
+        {"zerocoin", "getzwormseed", &getzwormseed, false, false, true},
+        {"zerocoin", "setzwormseed", &setzwormseed, false, false, true},
         {"zerocoin", "generatemintlist", &generatemintlist, false, false, true},
-        {"zerocoin", "searchdzcdzc", &searchdzcdzc, false, false, true},
-        {"zerocoin", "dzcdzcstate", &dzcdzcstate, false, false, true}
+        {"zerocoin", "searchdzworm", &searchdzworm, false, false, true},
+        {"zerocoin", "dzwormstate", &dzwormstate, false, false, true}
 
 #endif // ENABLE_WALLET
 };
@@ -625,7 +625,7 @@ std::vector<std::string> CRPCTable::listCommands() const
 
 std::string HelpExampleCli(string methodname, string args)
 {
-    return "> cryptodezirecash-cli " + methodname + " " + args + "\n";
+    return "> worm-cli " + methodname + " " + args + "\n";
 }
 
 std::string HelpExampleRpc(string methodname, string args)

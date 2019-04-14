@@ -1,7 +1,7 @@
 // Copyright (c) 2011-2014 The Bitcoin developers
 // Copyright (c) 2014-2015 The Dash developers
 // Copyright (c) 2015-2017 The PIVX developers
-// Copyright (c) 2018 The Crypto Dezire Cash developers
+// Copyright (c) 2018 The WORM developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -20,18 +20,18 @@ BitcoinUnits::BitcoinUnits(QObject* parent) : QAbstractListModel(parent),
 QList<BitcoinUnits::Unit> BitcoinUnits::availableUnits()
 {
     QList<BitcoinUnits::Unit> unitlist;
-    unitlist.append(CDZC);
-    unitlist.append(mCDZC);
-    unitlist.append(uCDZC);
+    unitlist.append(WORM);
+    unitlist.append(mWORM);
+    unitlist.append(uWORM);
     return unitlist;
 }
 
 bool BitcoinUnits::valid(int unit)
 {
     switch (unit) {
-    case CDZC:
-    case mCDZC:
-    case uCDZC:
+    case WORM:
+    case mWORM:
+    case uWORM:
         return true;
     default:
         return false;
@@ -41,12 +41,12 @@ bool BitcoinUnits::valid(int unit)
 QString BitcoinUnits::id(int unit)
 {
     switch (unit) {
-    case CDZC:
-        return QString("cryptodezirecash");
-    case mCDZC:
-        return QString("mcryptodezirecash");
-    case uCDZC:
-        return QString::fromUtf8("ucryptodezirecash");
+    case WORM:
+        return QString("worm");
+    case mWORM:
+        return QString("mworm");
+    case uWORM:
+        return QString::fromUtf8("uworm");
     default:
         return QString("???");
     }
@@ -56,23 +56,23 @@ QString BitcoinUnits::name(int unit)
 {
     if (Params().NetworkID() == CBaseChainParams::MAIN) {
         switch (unit) {
-        case CDZC:
-            return QString("CDZC");
-        case mCDZC:
-            return QString("mCDZC");
-        case uCDZC:
-            return QString::fromUtf8("μCDZC");
+        case WORM:
+            return QString("WORM");
+        case mWORM:
+            return QString("mWORM");
+        case uWORM:
+            return QString::fromUtf8("μWORM");
         default:
             return QString("???");
         }
     } else {
         switch (unit) {
-        case CDZC:
-            return QString("tCDZC");
-        case mCDZC:
-            return QString("mtCDZC");
-        case uCDZC:
-            return QString::fromUtf8("μtCDZC");
+        case WORM:
+            return QString("tWORM");
+        case mWORM:
+            return QString("mtWORM");
+        case uWORM:
+            return QString::fromUtf8("μtWORM");
         default:
             return QString("???");
         }
@@ -83,23 +83,23 @@ QString BitcoinUnits::description(int unit)
 {
     if (Params().NetworkID() == CBaseChainParams::MAIN) {
         switch (unit) {
-        case CDZC:
-            return QString("CDZC");
-        case mCDZC:
-            return QString("Milli-CDZC (1 / 1" THIN_SP_UTF8 "000)");
-        case uCDZC:
-            return QString("Micro-CDZC (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
+        case WORM:
+            return QString("WORM");
+        case mWORM:
+            return QString("Milli-WORM (1 / 1" THIN_SP_UTF8 "000)");
+        case uWORM:
+            return QString("Micro-WORM (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
         default:
             return QString("???");
         }
     } else {
         switch (unit) {
-        case CDZC:
-            return QString("TestCDZCs");
-        case mCDZC:
-            return QString("Milli-TestCDZC (1 / 1" THIN_SP_UTF8 "000)");
-        case uCDZC:
-            return QString("Micro-TestCDZC (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
+        case WORM:
+            return QString("TestWORMs");
+        case mWORM:
+            return QString("Milli-TestWORM (1 / 1" THIN_SP_UTF8 "000)");
+        case uWORM:
+            return QString("Micro-TestWORM (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
         default:
             return QString("???");
         }
@@ -109,11 +109,11 @@ QString BitcoinUnits::description(int unit)
 qint64 BitcoinUnits::factor(int unit)
 {
     switch (unit) {
-    case CDZC:
+    case WORM:
         return 100000000;
-    case mCDZC:
+    case mWORM:
         return 100000;
-    case uCDZC:
+    case uWORM:
         return 100;
     default:
         return 100000000;
@@ -123,11 +123,11 @@ qint64 BitcoinUnits::factor(int unit)
 int BitcoinUnits::decimals(int unit)
 {
     switch (unit) {
-    case CDZC:
+    case WORM:
         return 8;
-    case mCDZC:
+    case mWORM:
         return 5;
-    case uCDZC:
+    case uWORM:
         return 2;
     default:
         return 0;

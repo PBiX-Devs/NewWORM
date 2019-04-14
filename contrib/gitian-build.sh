@@ -1,5 +1,5 @@
 # Copyright (c) 2016 The Bitcoin Core developers
-# Copyright (c) 2018 The Crypto Dezire Cash developers
+# Copyright (c) 2018 The WORM developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -18,7 +18,7 @@ osx=true
 SIGNER=
 VERSION=
 commit=false
-url=https://github.com/cryptodezirecash/cryptodezirecash
+url=https://github.com/worm/worm
 proc=2
 mem=2000
 lxc=true
@@ -32,7 +32,7 @@ commitFiles=true
 read -d '' usage <<- EOF
 Usage: $scriptName [-c|u|v|b|s|B|o|h|j|m|] signer version
 
-Run this script from the directory containing the cryptodezirecash, gitian-builder, gitian.sigs, and cryptodezirecash-detached-sigs.
+Run this script from the directory containing the worm, gitian-builder, gitian.sigs, and worm-detached-sigs.
 
 Arguments:
 signer          GPG signer to sign each build assert file
@@ -40,7 +40,7 @@ version		Version number, commit, or branch to build. If building a commit or bra
 
 Options:
 -c|--commit	Indicate that the version argument is for a commit or branch
--u|--url	Specify the URL of the repository. Default is https://github.com/cryptodezirecash/cryptodezirecash
+-u|--url	Specify the URL of the repository. Default is https://github.com/worm/worm
 -v|--verify 	Verify the gitian build
 -b|--build	Do a gitian build
 -s|--sign	Make signed binaries for Windows and Mac OSX
@@ -238,8 +238,8 @@ echo ${COMMIT}
 if [[ $setup = true ]]
 then
     sudo apt-get install ruby apache2 git apt-cacher-ng python-vm-builder qemu-kvm qemu-utils
-    git clone https://github.com/cryptodezirecash/gitian.sigs.git
-    git clone https://github.com/cryptodezirecash/cryptodezirecash-detached-sigs.git
+    git clone https://github.com/worm/gitian.sigs.git
+    git clone https://github.com/worm/worm-detached-sigs.git
     git clone https://github.com/devrandom/gitian-builder.git
     pushd ./gitian-builder
     if [[ -n "$USE_LXC" ]]
@@ -253,7 +253,7 @@ then
 fi
 
 # Set up build
-pushd ./cryptodezirecash
+pushd ./worm
 git fetch
 git checkout ${COMMIT}
 popd
@@ -262,7 +262,7 @@ popd
 if [[ $build = true ]]
 then
 	# Make output folder
-	mkdir -p ./cryptodezirecash-binaries/${VERSION}
+	mkdir -p ./worm-binaries/${VERSION}
 
 	# Build Dependencies
 	echo ""
@@ -272,7 +272,7 @@ then
 	mkdir -p inputs
 	wget -N -P inputs $osslPatchUrl
 	wget -N -P inputs $osslTarUrl
-	make -C ../cryptodezirecash/depends download SOURCES_PATH=`pwd`/cache/common
+	make -C ../worm/depends download SOURCES_PATH=`pwd`/cache/common
 
 	# Linux
 	if [[ $linux = true ]]
@@ -280,9 +280,9 @@ then
             echo ""
 	    echo "Compiling ${VERSION} Linux"
 	    echo ""
-	    ./bin/gbuild -j ${proc} -m ${mem} --commit cryptodezirecash=${COMMIT} --url cryptodezirecash=${url} ../cryptodezirecash/contrib/gitian-descriptors/gitian-linux.yml
-	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-linux --destination ../gitian.sigs/ ../cryptodezirecash/contrib/gitian-descriptors/gitian-linux.yml
-	    mv build/out/cryptodezirecash-*.tar.gz build/out/src/cryptodezirecash-*.tar.gz ../cryptodezirecash-binaries/${VERSION}
+	    ./bin/gbuild -j ${proc} -m ${mem} --commit worm=${COMMIT} --url worm=${url} ../worm/contrib/gitian-descriptors/gitian-linux.yml
+	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-linux --destination ../gitian.sigs/ ../worm/contrib/gitian-descriptors/gitian-linux.yml
+	    mv build/out/worm-*.tar.gz build/out/src/worm-*.tar.gz ../worm-binaries/${VERSION}
 	fi
 	# Windows
 	if [[ $windows = true ]]
@@ -290,10 +290,10 @@ then
 	    echo ""
 	    echo "Compiling ${VERSION} Windows"
 	    echo ""
-	    ./bin/gbuild -j ${proc} -m ${mem} --commit cryptodezirecash=${COMMIT} --url cryptodezirecash=${url} ../cryptodezirecash/contrib/gitian-descriptors/gitian-win.yml
-	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-win-unsigned --destination ../gitian.sigs/ ../cryptodezirecash/contrib/gitian-descriptors/gitian-win.yml
-	    mv build/out/cryptodezirecash-*-win-unsigned.tar.gz inputs/cryptodezirecash-win-unsigned.tar.gz
-	    mv build/out/cryptodezirecash-*.zip build/out/cryptodezirecash-*.exe ../cryptodezirecash-binaries/${VERSION}
+	    ./bin/gbuild -j ${proc} -m ${mem} --commit worm=${COMMIT} --url worm=${url} ../worm/contrib/gitian-descriptors/gitian-win.yml
+	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-win-unsigned --destination ../gitian.sigs/ ../worm/contrib/gitian-descriptors/gitian-win.yml
+	    mv build/out/worm-*-win-unsigned.tar.gz inputs/worm-win-unsigned.tar.gz
+	    mv build/out/worm-*.zip build/out/worm-*.exe ../worm-binaries/${VERSION}
 	fi
 	# Mac OSX
 	if [[ $osx = true ]]
@@ -301,10 +301,10 @@ then
 	    echo ""
 	    echo "Compiling ${VERSION} Mac OSX"
 	    echo ""
-	    ./bin/gbuild -j ${proc} -m ${mem} --commit cryptodezirecash=${COMMIT} --url cryptodezirecash=${url} ../cryptodezirecash/contrib/gitian-descriptors/gitian-osx.yml
-	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-osx-unsigned --destination ../gitian.sigs/ ../cryptodezirecash/contrib/gitian-descriptors/gitian-osx.yml
-	    mv build/out/cryptodezirecash-*-osx-unsigned.tar.gz inputs/cryptodezirecash-osx-unsigned.tar.gz
-	    mv build/out/cryptodezirecash-*.tar.gz build/out/cryptodezirecash-*.dmg ../cryptodezirecash-binaries/${VERSION}
+	    ./bin/gbuild -j ${proc} -m ${mem} --commit worm=${COMMIT} --url worm=${url} ../worm/contrib/gitian-descriptors/gitian-osx.yml
+	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-osx-unsigned --destination ../gitian.sigs/ ../worm/contrib/gitian-descriptors/gitian-osx.yml
+	    mv build/out/worm-*-osx-unsigned.tar.gz inputs/worm-osx-unsigned.tar.gz
+	    mv build/out/worm-*.tar.gz build/out/worm-*.dmg ../worm-binaries/${VERSION}
 	fi
 	# AArch64
 	if [[ $aarch64 = true ]]
@@ -312,9 +312,9 @@ then
 	    echo ""
 	    echo "Compiling ${VERSION} AArch64"
 	    echo ""
-	    ./bin/gbuild -j ${proc} -m ${mem} --commit cryptodezirecash=${COMMIT} --url cryptodezirecash=${url} ../cryptodezirecash/contrib/gitian-descriptors/gitian-aarch64.yml
-	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-aarch64 --destination ../gitian.sigs/ ../cryptodezirecash/contrib/gitian-descriptors/gitian-aarch64.yml
-	    mv build/out/cryptodezirecash-*.tar.gz build/out/src/cryptodezirecash-*.tar.gz ../cryptodezirecash-binaries/${VERSION}
+	    ./bin/gbuild -j ${proc} -m ${mem} --commit worm=${COMMIT} --url worm=${url} ../worm/contrib/gitian-descriptors/gitian-aarch64.yml
+	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-aarch64 --destination ../gitian.sigs/ ../worm/contrib/gitian-descriptors/gitian-aarch64.yml
+	    mv build/out/worm-*.tar.gz build/out/src/worm-*.tar.gz ../worm-binaries/${VERSION}
 	popd
 
         if [[ $commitFiles = true ]]
@@ -341,32 +341,32 @@ then
 	echo ""
 	echo "Verifying v${VERSION} Linux"
 	echo ""
-	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-linux ../cryptodezirecash/contrib/gitian-descriptors/gitian-linux.yml
+	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-linux ../worm/contrib/gitian-descriptors/gitian-linux.yml
 	# Windows
 	echo ""
 	echo "Verifying v${VERSION} Windows"
 	echo ""
-	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-win-unsigned ../cryptodezirecash/contrib/gitian-descriptors/gitian-win.yml
+	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-win-unsigned ../worm/contrib/gitian-descriptors/gitian-win.yml
 	# Mac OSX
 	echo ""
 	echo "Verifying v${VERSION} Mac OSX"
 	echo ""
-	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-osx-unsigned ../cryptodezirecash/contrib/gitian-descriptors/gitian-osx.yml
+	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-osx-unsigned ../worm/contrib/gitian-descriptors/gitian-osx.yml
 	# AArch64
 	echo ""
 	echo "Verifying v${VERSION} AArch64"
 	echo ""
-	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-aarch64 ../cryptodezirecash/contrib/gitian-descriptors/gitian-aarch64.yml
+	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-aarch64 ../worm/contrib/gitian-descriptors/gitian-aarch64.yml
 	# Signed Windows
 	echo ""
 	echo "Verifying v${VERSION} Signed Windows"
 	echo ""
-	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-osx-signed ../cryptodezirecash/contrib/gitian-descriptors/gitian-osx-signer.yml
+	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-osx-signed ../worm/contrib/gitian-descriptors/gitian-osx-signer.yml
 	# Signed Mac OSX
 	echo ""
 	echo "Verifying v${VERSION} Signed Mac OSX"
 	echo ""
-	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-osx-signed ../cryptodezirecash/contrib/gitian-descriptors/gitian-osx-signer.yml
+	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-osx-signed ../worm/contrib/gitian-descriptors/gitian-osx-signer.yml
 	popd
 fi
 
@@ -381,10 +381,10 @@ then
 	    echo ""
 	    echo "Signing ${VERSION} Windows"
 	    echo ""
-	    ./bin/gbuild -i --commit signature=${COMMIT} ../cryptodezirecash/contrib/gitian-descriptors/gitian-win-signer.yml
-	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-win-signed --destination ../gitian.sigs/ ../cryptodezirecash/contrib/gitian-descriptors/gitian-win-signer.yml
-	    mv build/out/cryptodezirecash-*win64-setup.exe ../cryptodezirecash-binaries/${VERSION}
-	    mv build/out/cryptodezirecash-*win32-setup.exe ../cryptodezirecash-binaries/${VERSION}
+	    ./bin/gbuild -i --commit signature=${COMMIT} ../worm/contrib/gitian-descriptors/gitian-win-signer.yml
+	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-win-signed --destination ../gitian.sigs/ ../worm/contrib/gitian-descriptors/gitian-win-signer.yml
+	    mv build/out/worm-*win64-setup.exe ../worm-binaries/${VERSION}
+	    mv build/out/worm-*win32-setup.exe ../worm-binaries/${VERSION}
 	fi
 	# Sign Mac OSX
 	if [[ $osx = true ]]
@@ -392,9 +392,9 @@ then
 	    echo ""
 	    echo "Signing ${VERSION} Mac OSX"
 	    echo ""
-	    ./bin/gbuild -i --commit signature=${COMMIT} ../cryptodezirecash/contrib/gitian-descriptors/gitian-osx-signer.yml
-	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-osx-signed --destination ../gitian.sigs/ ../cryptodezirecash/contrib/gitian-descriptors/gitian-osx-signer.yml
-	    mv build/out/cryptodezirecash-osx-signed.dmg ../cryptodezirecash-binaries/${VERSION}/cryptodezirecash-${VERSION}-osx.dmg
+	    ./bin/gbuild -i --commit signature=${COMMIT} ../worm/contrib/gitian-descriptors/gitian-osx-signer.yml
+	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-osx-signed --destination ../gitian.sigs/ ../worm/contrib/gitian-descriptors/gitian-osx-signer.yml
+	    mv build/out/worm-osx-signed.dmg ../worm-binaries/${VERSION}/worm-${VERSION}-osx.dmg
 	fi
 	popd
 

@@ -1,5 +1,5 @@
 // Copyright (c) 2017-2018 The PIVX developers
-// Copyright (c) 2018 The Crypto Dezire Cash developers
+// Copyright (c) 2018 The WORM developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -10,7 +10,7 @@
 #include "stakeinput.h"
 #include "wallet.h"
 
-CZCdzcStake::CZCdzcStake(const libzerocoin::CoinSpend& spend)
+zWormStake::zWormStake(const libzerocoin::CoinSpend& spend)
 {
     this->nChecksum = spend.getAccumulatorChecksum();
     this->denom = spend.getDenomination();
@@ -20,7 +20,7 @@ CZCdzcStake::CZCdzcStake(const libzerocoin::CoinSpend& spend)
     fMint = false;
 }
 
-int CZCdzcStake::GetChecksumHeightFromMint()
+int zWormStake::GetChecksumHeightFromMint()
 {
     int nHeightChecksum = chainActive.Height() - Params().Zerocoin_RequiredStakeDepth();
 
@@ -31,20 +31,20 @@ int CZCdzcStake::GetChecksumHeightFromMint()
     return GetChecksumHeight(nChecksum, denom);
 }
 
-int CZCdzcStake::GetChecksumHeightFromSpend()
+int zWormStake::GetChecksumHeightFromSpend()
 {
     return GetChecksumHeight(nChecksum, denom);
 }
 
-uint32_t CZCdzcStake::GetChecksum()
+uint32_t zWormStake::GetChecksum()
 {
     return nChecksum;
 }
 
-// The zCDZC block index is the first appearance of the accumulator checksum that was used in the spend
+// The zWORM block index is the first appearance of the accumulator checksum that was used in the spend
 // note that this also means when staking that this checksum should be from a block that is beyond 60 minutes old and
 // 100 blocks deep.
-CBlockIndex* CZCdzcStake::GetIndexFrom()
+CBlockIndex* zWormStake::GetIndexFrom()
 {
     if (pindexFrom)
         return pindexFrom;
@@ -66,13 +66,13 @@ CBlockIndex* CZCdzcStake::GetIndexFrom()
     return pindexFrom;
 }
 
-CAmount CZCdzcStake::GetValue()
+CAmount zWormStake::GetValue()
 {
     return denom * COIN;
 }
 
 //Use the first accumulator checkpoint that occurs 60 minutes after the block being staked from
-bool CZCdzcStake::GetModifier(uint64_t& nStakeModifier)
+bool zWormStake::GetModifier(uint64_t& nStakeModifier)
 {
     CBlockIndex* pindex = GetIndexFrom();
     if (!pindex)
@@ -92,15 +92,15 @@ bool CZCdzcStake::GetModifier(uint64_t& nStakeModifier)
     }
 }
 
-CDataStream CZCdzcStake::GetUniqueness()
+CDataStream zWormStake::GetUniqueness()
 {
-    //The unique identifier for a zCDZC is a hash of the serial
+    //The unique identifier for a zWORM is a hash of the serial
     CDataStream ss(SER_GETHASH, 0);
     ss << hashSerial;
     return ss;
 }
 
-bool CZCdzcStake::CreateTxIn(CWallet* pwallet, CTxIn& txIn, uint256 hashTxOut)
+bool zWormStake::CreateTxIn(CWallet* pwallet, CTxIn& txIn, uint256 hashTxOut)
 {
     CBlockIndex* pindexCheckpoint = GetIndexFrom();
     if (!pindexCheckpoint)
@@ -121,25 +121,25 @@ bool CZCdzcStake::CreateTxIn(CWallet* pwallet, CTxIn& txIn, uint256 hashTxOut)
     return true;
 }
 
-bool CZCdzcStake::CreateTxOuts(CWallet* pwallet, vector<CTxOut>& vout, CAmount nTotal)
+bool zWormStake::CreateTxOuts(CWallet* pwallet, vector<CTxOut>& vout, CAmount nTotal)
 {
-    //Create an output returning the zCDZC that was staked
+    //Create an output returning the zWORM that was staked
     CTxOut outReward;
     libzerocoin::CoinDenomination denomStaked = libzerocoin::AmountToZerocoinDenomination(this->GetValue());
     CDeterministicMint dMint;
-    if (!pwallet->CreateZCDZCOutPut(denomStaked, outReward, dMint))
-        return error("%s: failed to create zCDZC output", __func__);
+    if (!pwallet->CreateZWORMOutPut(denomStaked, outReward, dMint))
+        return error("%s: failed to create zWORM output", __func__);
     vout.emplace_back(outReward);
 
     //Add new staked denom to our wallet
     if (!pwallet->DatabaseMint(dMint))
-        return error("%s: failed to database the staked zCDZC", __func__);
+        return error("%s: failed to database the staked zWORM", __func__);
 
     for (unsigned int i = 0; i < 3; i++) {
         CTxOut out;
         CDeterministicMint dMintReward;
-        if (!pwallet->CreateZCDZCOutPut(libzerocoin::CoinDenomination::ZQ_ONE, out, dMintReward))
-            return error("%s: failed to create zCDZC output", __func__);
+        if (!pwallet->CreateZWORMOutPut(libzerocoin::CoinDenomination::ZQ_ONE, out, dMintReward))
+            return error("%s: failed to create zWORM output", __func__);
         vout.emplace_back(out);
 
         if (!pwallet->DatabaseMint(dMintReward))
@@ -149,23 +149,23 @@ bool CZCdzcStake::CreateTxOuts(CWallet* pwallet, vector<CTxOut>& vout, CAmount n
     return true;
 }
 
-bool CZCdzcStake::GetTxFrom(CTransaction& tx)
+bool zWormStake::GetTxFrom(CTransaction& tx)
 {
     return false;
 }
 
-bool CZCdzcStake::MarkSpent(CWallet *pwallet, const uint256& txid)
+bool zWormStake::MarkSpent(CWallet *pwallet, const uint256& txid)
 {
-    CzCDZCTracker* zcdzcTracker = pwallet->zcdzcTracker.get();
+    CzWORMTracker* zwormTracker = pwallet->zwormTracker.get();
     CMintMeta meta;
-    if (!zcdzcTracker->GetMetaFromStakeHash(hashSerial, meta))
+    if (!zwormTracker->GetMetaFromStakeHash(hashSerial, meta))
         return error("%s: tracker does not have serialhash", __func__);
 
-    zcdzcTracker->SetPubcoinUsed(meta.hashPubcoin, txid);
+    zwormTracker->SetPubcoinUsed(meta.hashPubcoin, txid);
     return true;
 }
 
-//!CDZC Stake
+//!WORM Stake
 bool CCdzcStake::SetInput(CTransaction txPrev, unsigned int n)
 {
     this->txFrom = txPrev;
@@ -241,7 +241,7 @@ bool CCdzcStake::GetModifier(uint64_t& nStakeModifier)
 
 CDataStream CCdzcStake::GetUniqueness()
 {
-    //The unique identifier for a CDZC stake is the outpoint
+    //The unique identifier for a WORM stake is the outpoint
     CDataStream ss(SER_NETWORK, 0);
     ss << nPosition << txFrom.GetHash();
     return ss;

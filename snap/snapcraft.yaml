@@ -1,8 +1,8 @@
-name: cryptodezirecash
+name: worm
 version: master
 summary:   peer-to-peer network based digital currency
 description: |
-  Crypto Dezire Cash is a free open source peer-to-peer electronic cash system that
+  WORM is a free open source peer-to-peer electronic cash system that
   is completely decentralized, without the need for a central server or
   trusted parties.  Users hold the crypto keys to their own money and
   transact directly with each other, with the help of a P2P network to
@@ -13,23 +13,23 @@ confinement: strict
 
 apps:
   daemon:
-    command: cryptodezirecashd
+    command: wormd
     plugs: [network, network-bind]
     environment:
       XDG_DATA_DIRS: $SNAP_USER_DATA:$SNAP/usr/share:$XDG_DATA_DIRS
-    aliases: [cryptodezirecashd]
+    aliases: [wormd]
   qt:
-    command: desktop-launch cryptodezirecash-qt
+    command: desktop-launch worm-qt
     plugs: [network, network-bind, unity7]
-    aliases: [cryptodezirecash-qt]
-    desktop: cryptodezirecash.desktop
+    aliases: [worm-qt]
+    desktop: worm.desktop
   cli:
-    command: cryptodezirecash-cli
-    aliases: [cryptodezirecash-cli]
+    command: worm-cli
+    aliases: [worm-cli]
 
 parts:
-  cryptodezirecash:
-    source: https://github.com/cryptodezirecash/cryptodezirecash
+  worm:
+    source: https://github.com/worm/worm
     source-type: git
     source-tag: master
     plugin: autotools

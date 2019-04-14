@@ -2,7 +2,7 @@
 // Copyright (c) 2009-2014 The Bitcoin developers
 // Copyright (c) 2014-2015 The Dash developers
 // Copyright (c) 2015-2018 The PIVX developers
-// Copyright (c) 2018 The Crypto Dezire Cash developers
+// Copyright (c) 2018 The WORM developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -147,9 +147,9 @@ static const CRPCConvertParam vRPCConvertParams[] =
         {"getspentzerocoinamount", 1},
         {"generatemintlist", 0},
         {"generatemintlist", 1},
-        {"searchdzcdzc", 0},
-        {"searchdzcdzc", 1},
-        {"searchdzcdzc", 2},
+        {"searchdzworm", 0},
+        {"searchdzworm", 1},
+        {"searchdzworm", 2},
         {"getaccumulatorvalues", 0},
         {"calculateaccumulatorvalues", 0},
         {"getfeeinfo", 0}

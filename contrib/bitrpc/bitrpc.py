@@ -1,4 +1,4 @@
-# Copyright (c) 2018 The Crypto Dezire Cash developers
+# Copyright (c) 2018 The WORM developers
 
 from jsonrpc import ServiceProxy
 import sys

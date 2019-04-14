@@ -5,10 +5,10 @@
 """Test bitcoind with different proxy configuration.
 
 Test plan:
-- Start cryptodezirecashd's with different proxy configurations
+- Start wormd's with different proxy configurations
 - Use addnode to initiate connections
 - Verify that proxies are connected to, and the right connection command is given
-- Proxy configurations to test on cryptodezirecashd side:
+- Proxy configurations to test on wormd side:
     - `-proxy` (proxy everything)
     - `-onion` (proxy just onions)
     - `-proxyrandomize` Circuit randomization
@@ -18,8 +18,8 @@ Test plan:
     - proxy on IPv6
 
 - Create various proxies (as threads)
-- Create cryptodezirecashds that connect to them
-- Manipulate the cryptodezirecashds using addnode (onetry) an observe effects
+- Create wormds that connect to them
+- Manipulate the wormds using addnode (onetry) an observe effects
 
 addnode connect to IPv4
 addnode connect to IPv6

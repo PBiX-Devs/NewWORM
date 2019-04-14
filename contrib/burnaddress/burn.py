@@ -2,7 +2,7 @@
 
 # Author: James C. Stroud
 # Copyright (c) 20?? CoinWhisperer - https://gist.github.com/CoinWhisperer
-# Copyright (c) 2018 The Crypto Dezire Cash developers
+# Copyright (c) 2018 The WORM developers
 
 # Source: https://gist.github.com/CoinWhisperer/6d673f1f3d13da1611cd
 
@@ -21,7 +21,7 @@ For instructions, call the program with no arguments::
 An example template is accessible using "test" as the argument::
     % burn-btc test
     DezireBurnAddressBurnPremineXmtXTL
-Validate bitcoin burn addresses at https://explorer.cryptodezirecash.com/address/
+Validate bitcoin burn addresses at https://explorer.worm.com/address/
 """
 
 import sys

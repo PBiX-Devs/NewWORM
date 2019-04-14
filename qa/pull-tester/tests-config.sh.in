@@ -1,6 +1,6 @@
 #!/bin/bash
 # Copyright (c) 2013-2014 The Bitcoin Core developers
-# Copyright (c) 2018 The Crypto Dezire Cash developers
+# Copyright (c) 2018 The WORM developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -12,6 +12,6 @@ EXEEXT="@EXEEXT@"
 @BUILD_BITCOIN_UTILS_TRUE@ENABLE_UTILS=1
 @BUILD_BITCOIND_TRUE@ENABLE_BITCOIND=1
 
-REAL_BITCOIND="$BUILDDIR/src/cryptodezirecashd${EXEEXT}"
-REAL_BITCOINCLI="$BUILDDIR/src/cryptodezirecash-cli${EXEEXT}"
+REAL_BITCOIND="$BUILDDIR/src/wormd${EXEEXT}"
+REAL_BITCOINCLI="$BUILDDIR/src/worm-cli${EXEEXT}"
 

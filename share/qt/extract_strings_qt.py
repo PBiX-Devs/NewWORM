@@ -1,5 +1,5 @@
 
-# Copyright (c) 2018 The Crypto Dezire Cash developers
+# Copyright (c) 2018 The WORM developers
 #!/usr/bin/python
 '''
 Extract _("...") strings for translation and convert to Qt stringdefs so that
@@ -12,7 +12,7 @@ import operator
 import os
 import sys
 
-OUT_CPP="qt/cryptodezirecashstrings.cpp"
+OUT_CPP="qt/wormstrings.cpp"
 EMPTY=['""']
 
 def parse_po(text):
@@ -76,10 +76,10 @@ f.write("""
 #define UNUSED
 #endif
 """)
-f.write('static const char UNUSED *cryptodezirecash_strings[] = {\n')
+f.write('static const char UNUSED *worm_strings[] = {\n')
 messages.sort(key=operator.itemgetter(0))
 for (msgid, msgstr) in messages:
     if msgid != EMPTY:
-        f.write('QT_TRANSLATE_NOOP("cryptodezirecash-core", %s),\n' % ('\n'.join(msgid)))
+        f.write('QT_TRANSLATE_NOOP("worm-core", %s),\n' % ('\n'.join(msgid)))
 f.write('};\n')
 f.close()

@@ -1,6 +1,6 @@
-## Crypto Dezire Cash burn address creation script
+## WORM burn address creation script
 
-### burnaddress.py: create a cryptodezirecash burn address
+### burnaddress.py: create a worm burn address
 
   - Original author: James C. Stroud
   - This program requires [base58](https://pypi.python.org/pypi/base58/0.2.1).
@@ -8,8 +8,8 @@
 Call the program with a template burn address as the only argument:
 
     ```
-    burnaddress.py.py Crypto Dezire CashBurnAddressBurnPremineXXXXXX
-    Crypto Dezire CashBurnAddressBurnPremineXmtXTL
+    burnaddress.py.py WORMBurnAddressBurnPremineXXXXXX
+    WORMBurnAddressBurnPremineXmtXTL
     ```
 
 For instructions, call the program with no arguments::
@@ -25,8 +25,8 @@ An example template is accessible using "test" as the argument::
 
     ```
     burnaddress.py.py test
-    Crypto Dezire CashBurnAddressBurnPremineXmtXTL
+    WORMBurnAddressBurnPremineXmtXTL
     ```
 
-Validate bitcoin burn addresses at [official cryptodezirecash blockexplorer](https://explorer.cryptodezirecash.com/address/)
+Validate bitcoin burn addresses at [official worm blockexplorer](https://explorer.worm.com/address/)
 

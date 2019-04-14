@@ -1,9 +1,9 @@
 // Copyright (c) 2017-2018 The PIVX developers
-// Copyright (c) 2018 The Crypto Dezire Cash developers
+// Copyright (c) 2018 The WORM developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
-#ifndef CRYPTODEZIRECASH_ACCUMULATORMAP_H
-#define CRYPTODEZIRECASH_ACCUMULATORMAP_H
+#ifndef WORM_ACCUMULATORMAP_H
+#define WORM_ACCUMULATORMAP_H
 
 #include "libzerocoin/Accumulator.h"
 #include "libzerocoin/Coin.h"
@@ -25,4 +25,4 @@ public:
     void Reset();
     void Reset(libzerocoin::ZerocoinParams* params2);
 };
-#endif //CRYPTODEZIRECASH_ACCUMULATORMAP_H
+#endif //WORM_ACCUMULATORMAP_H

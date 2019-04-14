@@ -1,13 +1,13 @@
 Sample configuration files for:
 
 ```
-SystemD: cryptodezirecashd.service
-Upstart: cryptodezirecashd.conf
-OpenRC:  cryptodezirecashd.openrc
-         cryptodezirecashd.openrcconf
-CentOS:  cryptodezirecashd.init
+SystemD: wormd.service
+Upstart: wormd.conf
+OpenRC:  wormd.openrc
+         wormd.openrcconf
+CentOS:  wormd.init
 
-macOS:    org.cryptodezirecash.cryptodezirecashd.plist
+macOS:    org.worm.wormd.plist
 ```
 have been made available to assist packagers in creating node packages here.
 

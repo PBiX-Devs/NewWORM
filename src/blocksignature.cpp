@@ -1,11 +1,11 @@
 // Copyright (c) 2017-2018 The PIVX developers
-// Copyright (c) 2018 The Crypto Dezire Cash developers
+// Copyright (c) 2018 The WORM developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include "blocksignature.h"
 #include "main.h"
-#include "zcdzcchain.h"
+#include "zwormchain.h"
 
 bool SignBlockWithKey(CBlock& block, const CKey& key)
 {
@@ -63,13 +63,13 @@ bool CheckBlockSignature(const CBlock& block)
     if (block.vchBlockSig.empty())
         return error("%s: vchBlockSig is empty!", __func__);
 
-    /** Each block is signed by the private key of the input that is staked. This can be either zCDZC or normal UTXO
-     *  zCDZC: Each zCDZC has a keypair associated with it. The serial number is a hash of the public key.
+    /** Each block is signed by the private key of the input that is staked. This can be either zWORM or normal UTXO
+     *  zWORM: Each zWORM has a keypair associated with it. The serial number is a hash of the public key.
      *  UTXO: The public key that signs must match the public key associated with the first utxo of the coinstake tx.
      */
     CPubKey pubkey;
-    bool fzCDZCStake = block.vtx[1].IsZerocoinSpend();
-    if (fzCDZCStake) {
+    bool fzWORMStake = block.vtx[1].IsZerocoinSpend();
+    if (fzWORMStake) {
         libzerocoin::CoinSpend spend = TxInToZerocoinSpend(block.vtx[1].vin[0]);
         pubkey = spend.getPubKey();
     } else {

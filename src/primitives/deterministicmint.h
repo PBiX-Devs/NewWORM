@@ -1,10 +1,10 @@
 // Copyright (c) 2018 The PIVX developers
-// Copyright (c) 2018 The Crypto Dezire Cash developers
+// Copyright (c) 2018 The WORM developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef CRYPTODEZIRECASH_DETERMINISTICMINT_H
-#define CRYPTODEZIRECASH_DETERMINISTICMINT_H
+#ifndef WORM_DETERMINISTICMINT_H
+#define WORM_DETERMINISTICMINT_H
 
 #include <libzerocoin/Denominations.h>
 #include <uint256.h>
@@ -65,4 +65,4 @@ public:
     };
 };
 
-#endif //CRYPTODEZIRECASH_DETERMINISTICMINT_H
+#endif //WORM_DETERMINISTICMINT_H

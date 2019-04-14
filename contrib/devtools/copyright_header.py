@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # Copyright (c) 2016-2018 The Bitcoin Core developers
-# Copyright (c) 2018 The Crypto Dezire Cash Core developers
+# Copyright (c) 2018 The WORM Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -91,13 +91,13 @@ EXPECTED_HOLDER_NAMES = [
     "Bitcoin Core Developers\n",
     "the Bitcoin Core developers\n",
     "The Bitcoin developers\n",
-    "Crypto Dezire Cash Dev\n",
-    "Crypto Dezire Cash Tor\n",
-    "The Crypto Dezire Cash Core developers\n",
-    "The Crypto Dezire Cash Core developers \n",
-    "Crypto Dezire Cash Core Developers\n",
-    "the Crypto Dezire Cash Core developers\n",
-    "The Crypto Dezire Cash developers\n",
+    "WORM Dev\n",
+    "WORM Tor\n",
+    "The WORM Core developers\n",
+    "The WORM Core developers \n",
+    "WORM Core Developers\n",
+    "the WORM Core developers\n",
+    "The WORM developers\n",
     "The PIVX Core developers\n",
     "The PIVX Core developers \n",
     "PIVX Core Developers\n",

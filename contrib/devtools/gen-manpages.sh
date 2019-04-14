@@ -4,23 +4,23 @@ TOPDIR=${TOPDIR:-$(git rev-parse --show-toplevel)}
 SRCDIR=${SRCDIR:-$TOPDIR/src}
 MANDIR=${MANDIR:-$TOPDIR/doc/man}
 
-CRYPTODEZIRECASHD=${CRYPTODEZIRECASHD:-$SRCDIR/cryptodezirecashd}
-CRYPTODEZIRECASHCLI=${CRYPTODEZIRECASHCLI:-$SRCDIR/cryptodezirecash-cli}
-CRYPTODEZIRECASHTX=${CRYPTODEZIRECASHTX:-$SRCDIR/cryptodezirecash-tx}
-CRYPTODEZIRECASHQT=${CRYPTODEZIRECASHQT:-$SRCDIR/qt/cryptodezirecash-qt}
+WORMD=${WORMD:-$SRCDIR/wormd}
+WORMCLI=${WORMCLI:-$SRCDIR/worm-cli}
+WORMTX=${WORMTX:-$SRCDIR/worm-tx}
+WORMQT=${WORMQT:-$SRCDIR/qt/worm-qt}
 
-[ ! -x $CRYPTODEZIRECASHD ] && echo "$CRYPTODEZIRECASHD not found or not executable." && exit 1
+[ ! -x $WORMD ] && echo "$WORMD not found or not executable." && exit 1
 
 # The autodetected version git tag can screw up manpage output a little bit
-BTCVER=($($CRYPTODEZIRECASHCLI --version | head -n1 | awk -F'[ -]' '{ print $6, $7 }'))
+BTCVER=($($WORMCLI --version | head -n1 | awk -F'[ -]' '{ print $6, $7 }'))
 
 # Create a footer file with copyright content.
-# This gets autodetected fine for cryptodezirecashd if --version-string is not set,
-# but has different outcomes for cryptodezirecash-qt and cryptodezirecash-cli.
+# This gets autodetected fine for wormd if --version-string is not set,
+# but has different outcomes for worm-qt and worm-cli.
 echo "[COPYRIGHT]" > footer.h2m
-$CRYPTODEZIRECASHD --version | sed -n '1!p' >> footer.h2m
+$WORMD --version | sed -n '1!p' >> footer.h2m
 
-for cmd in $CRYPTODEZIRECASHD $CRYPTODEZIRECASHCLI $CRYPTODEZIRECASHTX $CRYPTODEZIRECASHQT; do
+for cmd in $WORMD $WORMCLI $WORMTX $WORMQT; do
   cmdname="${cmd##*/}"
   help2man -N --version-string=${BTCVER[0]} --include=footer.h2m -o ${MANDIR}/${cmdname}.1 ${cmd}
   sed -i "s/\\\-${BTCVER[1]}//g" ${MANDIR}/${cmdname}.1

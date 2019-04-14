@@ -11,13 +11,13 @@
   </array>
 
   <key>CFBundleIconFile</key>
-  <string>cryptodezirecash.icns</string>
+  <string>worm.icns</string>
 
   <key>CFBundlePackageType</key>
   <string>APPL</string>
 
   <key>CFBundleGetInfoString</key>
-  <string>@CLIENT_VERSION_MAJOR@.@CLIENT_VERSION_MINOR@.@CLIENT_VERSION_REVISION@, Copyright © 2009-@COPYRIGHT_YEAR@ The Bitcoin Core developers, 2014-@COPYRIGHT_YEAR@ The Dash Core developers, 2015-@COPYRIGHT_YEAR@ The PIVX Core developers, @COPYRIGHT_YEAR@ The Crypto Dezire Cash Core developers</string>
+  <string>@CLIENT_VERSION_MAJOR@.@CLIENT_VERSION_MINOR@.@CLIENT_VERSION_REVISION@, Copyright © 2009-@COPYRIGHT_YEAR@ The Bitcoin Core developers, 2014-@COPYRIGHT_YEAR@ The Dash Core developers, 2015-@COPYRIGHT_YEAR@ The PIVX Core developers, @COPYRIGHT_YEAR@ The WORM Core developers</string>
 
   <key>CFBundleShortVersionString</key>
   <string>@CLIENT_VERSION_MAJOR@.@CLIENT_VERSION_MINOR@.@CLIENT_VERSION_REVISION@</string>
@@ -29,16 +29,16 @@
   <string>????</string>
 
   <key>CFBundleExecutable</key>
-  <string>CryptoDezireCash-Qt</string>
+  <string>WORM-Qt</string>
   
   <key>CFBundleName</key>
-  <string>CryptoDezireCash-Qt</string>
+  <string>WORM-Qt</string>
 
   <key>LSHasLocalizedDisplayName</key>
   <true/>
 
   <key>CFBundleIdentifier</key>
-  <string>io.cryptodezirecash.CryptoDezireCash-Qt</string>
+  <string>io.worm.WORM-Qt</string>
 
   <key>CFBundleURLTypes</key>
   <array>
@@ -46,10 +46,10 @@
       <key>CFBundleTypeRole</key>
       <string>Editor</string>
       <key>CFBundleURLName</key>
-      <string>io.cryptodezirecash.CryptoDezireCashPayment</string>
+      <string>io.worm.WORMPayment</string>
       <key>CFBundleURLSchemes</key>
       <array>
-        <string>cryptodezirecash</string>
+        <string>worm</string>
       </array>
     </dict>
   </array>
@@ -58,9 +58,9 @@
   <array>
     <dict>
       <key>UTTypeIdentifier</key>
-      <string>io.cryptodezirecash.paymentrequest</string>
+      <string>io.worm.paymentrequest</string>
       <key>UTTypeDescription</key>
-      <string>Crypto Dezire Cash payment request</string>
+      <string>WORM payment request</string>
       <key>UTTypeConformsTo</key>
       <array>
         <string>public.data</string>
@@ -68,10 +68,10 @@
       <key>UTTypeTagSpecification</key>
       <dict>
         <key>public.mime-type</key>
-        <string>application/x-cryptodezirecash-payment-request</string>
+        <string>application/x-worm-payment-request</string>
         <key>public.filename-extension</key>
         <array>
-          <string>cryptodezirecashpaymentrequest</string>
+          <string>wormpaymentrequest</string>
         </array>
       </dict>
     </dict>
@@ -84,7 +84,7 @@
       <string>Editor</string>
       <key>LSItemContentTypes</key>
       <array>
-        <string>io.cryptodezirecash.paymentrequest</string>
+        <string>io.worm.paymentrequest</string>
       </array>
       <key>LSHandlerRank</key>
       <string>Owner</string>

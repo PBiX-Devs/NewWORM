@@ -2,43 +2,43 @@
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-bin_PROGRAMS += qt/cryptodezirecash-qt
+bin_PROGRAMS += qt/worm-qt
 EXTRA_LIBRARIES += qt/libbitcoinqt.a
 
-# cryptodezirecash qt core #
+# worm qt core #
 QT_TS = \
-  qt/locale/cryptodezirecash_bg.ts \
-  qt/locale/cryptodezirecash_ca.ts \
-  qt/locale/cryptodezirecash_cs.ts \
-  qt/locale/cryptodezirecash_da.ts \
-  qt/locale/cryptodezirecash_de.ts \
-  qt/locale/cryptodezirecash_en.ts \
-  qt/locale/cryptodezirecash_en_US.ts \
-  qt/locale/cryptodezirecash_eo.ts \
-  qt/locale/cryptodezirecash_es.ts \
-  qt/locale/cryptodezirecash_es_ES.ts \
-  qt/locale/cryptodezirecash_fi.ts \
-  qt/locale/cryptodezirecash_fr_FR.ts \
-  qt/locale/cryptodezirecash_hi_IN.ts \
-  qt/locale/cryptodezirecash_hr.ts \
-  qt/locale/cryptodezirecash_hr_HR.ts \
-  qt/locale/cryptodezirecash_it.ts \
-  qt/locale/cryptodezirecash_ja.ts \
-  qt/locale/cryptodezirecash_ko_KR.ts \
-  qt/locale/cryptodezirecash_lt_LT.ts \
-  qt/locale/cryptodezirecash_nl.ts \
-  qt/locale/cryptodezirecash_pl.ts \
-  qt/locale/cryptodezirecash_pt.ts \
-  qt/locale/cryptodezirecash_pt_BR.ts \
-  qt/locale/cryptodezirecash_ro_RO.ts \
-  qt/locale/cryptodezirecash_ru.ts \
-  qt/locale/cryptodezirecash_sk.ts \
-  qt/locale/cryptodezirecash_sv.ts \
-  qt/locale/cryptodezirecash_tr.ts \
-  qt/locale/cryptodezirecash_uk.ts \
-  qt/locale/cryptodezirecash_vi.ts \
-  qt/locale/cryptodezirecash_zh_CN.ts \
-  qt/locale/cryptodezirecash_zh_TW.ts
+  qt/locale/worm_bg.ts \
+  qt/locale/worm_ca.ts \
+  qt/locale/worm_cs.ts \
+  qt/locale/worm_da.ts \
+  qt/locale/worm_de.ts \
+  qt/locale/worm_en.ts \
+  qt/locale/worm_en_US.ts \
+  qt/locale/worm_eo.ts \
+  qt/locale/worm_es.ts \
+  qt/locale/worm_es_ES.ts \
+  qt/locale/worm_fi.ts \
+  qt/locale/worm_fr_FR.ts \
+  qt/locale/worm_hi_IN.ts \
+  qt/locale/worm_hr.ts \
+  qt/locale/worm_hr_HR.ts \
+  qt/locale/worm_it.ts \
+  qt/locale/worm_ja.ts \
+  qt/locale/worm_ko_KR.ts \
+  qt/locale/worm_lt_LT.ts \
+  qt/locale/worm_nl.ts \
+  qt/locale/worm_pl.ts \
+  qt/locale/worm_pt.ts \
+  qt/locale/worm_pt_BR.ts \
+  qt/locale/worm_ro_RO.ts \
+  qt/locale/worm_ru.ts \
+  qt/locale/worm_sk.ts \
+  qt/locale/worm_sv.ts \
+  qt/locale/worm_tr.ts \
+  qt/locale/worm_uk.ts \
+  qt/locale/worm_vi.ts \
+  qt/locale/worm_zh_CN.ts \
+  qt/locale/worm_zh_TW.ts
 
 QT_FORMS_UI = \
   qt/forms/addressbookpage.ui \
@@ -66,7 +66,7 @@ QT_FORMS_UI = \
   qt/forms/sendcoinsentry.ui \
   qt/forms/signverifymessagedialog.ui \
   qt/forms/transactiondescdialog.ui \
-  qt/forms/zcdzccontroldialog.ui
+  qt/forms/zwormcontroldialog.ui
 
 QT_MOC_CPP = \
   qt/moc_addressbookpage.cpp \
@@ -122,23 +122,23 @@ QT_MOC_CPP = \
   qt/moc_walletframe.cpp \
   qt/moc_walletmodel.cpp \
   qt/moc_walletview.cpp \
-  qt/moc_zcdzccontroldialog.cpp
+  qt/moc_zwormcontroldialog.cpp
 
 BITCOIN_MM = \
   qt/macdockiconhandler.mm \
   qt/macnotificationhandler.mm
 
 QT_MOC = \
-  qt/cryptodezirecash.moc \
+  qt/worm.moc \
   qt/bitcoinamountfield.moc \
   qt/intro.moc \
   qt/overviewpage.moc \
   qt/rpcconsole.moc
 
-QT_QRC_CPP = qt/qrc_cryptodezirecash.cpp
-QT_QRC = qt/cryptodezirecash.qrc
-QT_QRC_LOCALE_CPP = qt/qrc_cryptodezirecash_locale.cpp
-QT_QRC_LOCALE = qt/cryptodezirecash_locale.qrc
+QT_QRC_CPP = qt/qrc_worm.cpp
+QT_QRC = qt/worm.qrc
+QT_QRC_LOCALE_CPP = qt/qrc_worm_locale.cpp
+QT_QRC_LOCALE = qt/worm_locale.qrc
 
 PROTOBUF_CC = qt/paymentrequest.pb.cc
 PROTOBUF_H = qt/paymentrequest.pb.h
@@ -205,7 +205,7 @@ BITCOIN_QT_H = \
   qt/walletmodeltransaction.h \
   qt/walletview.h \
   qt/winshutdownmonitor.h \
-  qt/zcdzccontroldialog.h
+  qt/zwormcontroldialog.h
 
 RES_ICONS = \
   qt/res/icons/announcement.png \
@@ -213,10 +213,10 @@ RES_ICONS = \
   qt/res/icons/address-book.png \
   qt/res/icons/automint_active.png \
   qt/res/icons/automint_inactive.png \
-  qt/res/icons/cryptodezirecash.ico \
-  qt/res/icons/cryptodezirecash.png \
-  qt/res/icons/cryptodezirecash_testnet.ico \
-  qt/res/icons/cryptodezirecash_testnet.png \
+  qt/res/icons/worm.ico \
+  qt/res/icons/worm.png \
+  qt/res/icons/worm_testnet.ico \
+  qt/res/icons/worm_testnet.png \
   qt/res/icons/browse.png \
   qt/res/icons/clock1.png \
   qt/res/icons/clock2.png \
@@ -265,12 +265,12 @@ RES_ICONS = \
   qt/res/icons/tx_input.png \
   qt/res/icons/tx_output.png \
   qt/res/icons/tx_mined.png \
-  qt/res/icons/unit_cryptodezirecash.png \
-  qt/res/icons/unit_mcryptodezirecash.png \
-  qt/res/icons/unit_ucryptodezirecash.png \
-  qt/res/icons/unit_tcryptodezirecash.png \
-  qt/res/icons/unit_tmcryptodezirecash.png \
-  qt/res/icons/unit_tucryptodezirecash.png
+  qt/res/icons/unit_worm.png \
+  qt/res/icons/unit_mworm.png \
+  qt/res/icons/unit_uworm.png \
+  qt/res/icons/unit_tworm.png \
+  qt/res/icons/unit_tmworm.png \
+  qt/res/icons/unit_tuworm.png
 
 BITCOIN_QT_BASE_CPP = \
   qt/bantablemodel.cpp \
@@ -335,7 +335,7 @@ BITCOIN_QT_WALLET_CPP = \
   qt/walletmodel.cpp \
   qt/walletmodeltransaction.cpp \
   qt/walletview.cpp \
-  qt/zcdzccontroldialog.cpp
+  qt/zwormcontroldialog.cpp
 
 BITCOIN_QT_CPP = $(BITCOIN_QT_BASE_CPP)
 if TARGET_WINDOWS
@@ -349,7 +349,7 @@ RES_IMAGES = \
   qt/res/images/about.png \
   qt/res/images/splash.png \
   qt/res/images/splash_testnet.png \
-  qt/res/images/cryptodezirecash_logo_horizontal.png \
+  qt/res/images/worm_logo_horizontal.png \
   qt/res/images/downArrow_dark.png \
   qt/res/images/downArrow_small_dark.png \
   qt/res/images/downArrow_small.png \
@@ -367,7 +367,7 @@ RES_CSS = \
 
 RES_MOVIES = $(wildcard $(srcdir)/qt/res/movies/spinner-*.png)
 
-BITCOIN_RC = qt/res/cryptodezirecash-qt-res.rc
+BITCOIN_RC = qt/res/worm-qt-res.rc
 
 BITCOIN_QT_INCLUDES = -I$(builddir)/qt -I$(srcdir)/qt -I$(srcdir)/qt/forms \
   -I$(builddir)/qt/forms
@@ -389,71 +389,71 @@ QT_FORMS_H=$(join $(dir $(QT_FORMS_UI)),$(addprefix ui_, $(notdir $(QT_FORMS_UI:
 # Most files will depend on the forms and moc files as includes. Generate them
 # before anything else.
 $(QT_MOC): $(QT_FORMS_H)
-$(qt_libbitcoinqt_a_OBJECTS) $(qt_cryptodezirecash_qt_OBJECTS) : | $(QT_MOC)
+$(qt_libbitcoinqt_a_OBJECTS) $(qt_worm_qt_OBJECTS) : | $(QT_MOC)
 
 #Generating these with a half-written protobuf header leads to wacky results.
 #This makes sure it's done.
 $(QT_MOC): $(PROTOBUF_H)
 $(QT_MOC_CPP): $(PROTOBUF_H)
 
-# cryptodezirecash-qt binary #
-qt_cryptodezirecash_qt_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(BITCOIN_QT_INCLUDES) \
+# worm-qt binary #
+qt_worm_qt_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(BITCOIN_QT_INCLUDES) \
   $(QT_INCLUDES) $(PROTOBUF_CFLAGS) $(QR_CFLAGS)
-qt_cryptodezirecash_qt_CXXFLAGS = $(AM_CXXFLAGS) $(QT_PIE_FLAGS)
+qt_worm_qt_CXXFLAGS = $(AM_CXXFLAGS) $(QT_PIE_FLAGS)
 
-qt_cryptodezirecash_qt_SOURCES = qt/cryptodezirecash.cpp
+qt_worm_qt_SOURCES = qt/worm.cpp
 if TARGET_DARWIN
-  qt_cryptodezirecash_qt_SOURCES += $(BITCOIN_MM)
+  qt_worm_qt_SOURCES += $(BITCOIN_MM)
 endif
 if TARGET_WINDOWS
-  qt_cryptodezirecash_qt_SOURCES += $(BITCOIN_RC)
+  qt_worm_qt_SOURCES += $(BITCOIN_RC)
 endif
-qt_cryptodezirecash_qt_LDADD = qt/libbitcoinqt.a $(LIBBITCOIN_SERVER)
+qt_worm_qt_LDADD = qt/libbitcoinqt.a $(LIBBITCOIN_SERVER)
 if ENABLE_WALLET
-qt_cryptodezirecash_qt_LDADD += $(LIBBITCOIN_UTIL) $(LIBBITCOIN_WALLET)
+qt_worm_qt_LDADD += $(LIBBITCOIN_UTIL) $(LIBBITCOIN_WALLET)
 endif
 if ENABLE_ZMQ
-qt_cryptodezirecash_qt_LDADD += $(LIBBITCOIN_ZMQ) $(ZMQ_LIBS)
+qt_worm_qt_LDADD += $(LIBBITCOIN_ZMQ) $(ZMQ_LIBS)
 endif
-qt_cryptodezirecash_qt_LDADD += $(LIBBITCOIN_CLI) $(LIBBITCOIN_COMMON) $(LIBBITCOIN_UTIL) $(LIBBITCOIN_CRYPTO) $(LIBUNIVALUE) $(LIBBITCOIN_ZEROCOIN) $(LIBLEVELDB) $(LIBLEVELDB_SSE42) $(LIBMEMENV) \
+qt_worm_qt_LDADD += $(LIBBITCOIN_CLI) $(LIBBITCOIN_COMMON) $(LIBBITCOIN_UTIL) $(LIBBITCOIN_CRYPTO) $(LIBUNIVALUE) $(LIBBITCOIN_ZEROCOIN) $(LIBLEVELDB) $(LIBLEVELDB_SSE42) $(LIBMEMENV) \
   $(BOOST_LIBS) $(QT_LIBS) $(QT_DBUS_LIBS) $(QR_LIBS) $(PROTOBUF_LIBS) $(BDB_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS) $(LIBSECP256K1) \
   $(EVENT_PTHREADS_LIBS) $(EVENT_LIBS)
-qt_cryptodezirecash_qt_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(QT_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
-qt_cryptodezirecash_qt_LIBTOOLFLAGS = $(AM_LIBTOOLFLAGS) --tag CXX
+qt_worm_qt_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(QT_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+qt_worm_qt_LIBTOOLFLAGS = $(AM_LIBTOOLFLAGS) --tag CXX
 
 #locale/foo.ts -> locale/foo.qm
 QT_QM=$(QT_TS:.ts=.qm)
 
 SECONDARY: $(QT_QM)
 
-$(srcdir)/qt/cryptodezirecashstrings.cpp: $(libbitcoin_server_a_SOURCES) $(libbitcoin_wallet_a_SOURCES) $(libbitcoin_common_a_SOURCES) $(libbitcoin_zmq_a_SOURCES) $(libbitcoin_util_a_SOURCES)
+$(srcdir)/qt/wormstrings.cpp: $(libbitcoin_server_a_SOURCES) $(libbitcoin_wallet_a_SOURCES) $(libbitcoin_common_a_SOURCES) $(libbitcoin_zmq_a_SOURCES) $(libbitcoin_util_a_SOURCES)
 	@test -n $(XGETTEXT) || echo "xgettext is required for updating translations"
 	$(AM_V_GEN) cd $(srcdir); XGETTEXT=$(XGETTEXT) PACKAGE_NAME="$(PACKAGE_NAME)" $(PYTHON) ../share/qt/extract_strings_qt.py $^
 
-translate: $(srcdir)/qt/cryptodezirecashstrings.cpp $(QT_FORMS_UI) $(QT_FORMS_UI) $(BITCOIN_QT_BASE_CPP) qt/cryptodezirecash.cpp $(BITCOIN_QT_WINDOWS_CPP) $(BITCOIN_QT_WALLET_CPP) $(BITCOIN_QT_H) $(BITCOIN_MM)
+translate: $(srcdir)/qt/wormstrings.cpp $(QT_FORMS_UI) $(QT_FORMS_UI) $(BITCOIN_QT_BASE_CPP) qt/worm.cpp $(BITCOIN_QT_WINDOWS_CPP) $(BITCOIN_QT_WALLET_CPP) $(BITCOIN_QT_H) $(BITCOIN_MM)
 	@test -n $(LUPDATE) || echo "lupdate is required for updating translations"
-	$(AM_V_GEN) QT_SELECT=$(QT_SELECT) $(LUPDATE) $^ -locations relative -no-obsolete -ts $(srcdir)/qt/locale/cryptodezirecash_en.ts
+	$(AM_V_GEN) QT_SELECT=$(QT_SELECT) $(LUPDATE) $^ -locations relative -no-obsolete -ts $(srcdir)/qt/locale/worm_en.ts
 
 $(QT_QRC_LOCALE_CPP): $(QT_QRC_LOCALE) $(QT_QM)
 	@test -f $(RCC)
 	@cp -f $< $(@D)/temp_$(<F)
-	$(AM_V_GEN) QT_SELECT=$(QT_SELECT) $(RCC) -name cryptodezirecash_locale $(@D)/temp_$(<F) | \
+	$(AM_V_GEN) QT_SELECT=$(QT_SELECT) $(RCC) -name worm_locale $(@D)/temp_$(<F) | \
 	  $(SED) -e '/^\*\*.*Created:/d' -e '/^\*\*.*by:/d' > $@
 	@rm $(@D)/temp_$(<F)
 
 $(QT_QRC_CPP): $(QT_QRC) $(QT_FORMS_H) $(RES_ICONS) $(RES_IMAGES) $(RES_CSS) $(RES_MOVIES) $(PROTOBUF_H)
 	@test -f $(RCC)
-	$(AM_V_GEN) QT_SELECT=$(QT_SELECT) $(RCC) -name cryptodezirecash $< | \
+	$(AM_V_GEN) QT_SELECT=$(QT_SELECT) $(RCC) -name worm $< | \
 	  $(SED) -e '/^\*\*.*Created:/d' -e '/^\*\*.*by:/d' > $@
 
-CLEAN_QT = $(nodist_qt_libbitcoinqt_a_SOURCES) $(QT_QM) $(QT_FORMS_H) qt/*.gcda qt/*.gcno qt/temp_cryptodezirecash_locale.qrc
+CLEAN_QT = $(nodist_qt_libbitcoinqt_a_SOURCES) $(QT_QM) $(QT_FORMS_H) qt/*.gcda qt/*.gcno qt/temp_worm_locale.qrc
 
 CLEANFILES += $(CLEAN_QT)
 
-cryptodezirecash_qt_clean: FORCE
-	rm -f $(CLEAN_QT) $(qt_libbitcoinqt_a_OBJECTS) $(qt_cryptodezirecash_qt_OBJECTS) qt/cryptodezirecash-qt$(EXEEXT) $(LIBBITCOINQT)
+worm_qt_clean: FORCE
+	rm -f $(CLEAN_QT) $(qt_libbitcoinqt_a_OBJECTS) $(qt_worm_qt_OBJECTS) qt/worm-qt$(EXEEXT) $(LIBBITCOINQT)
 
-cryptodezirecash_qt : qt/cryptodezirecash-qt$(EXEEXT)
+worm_qt : qt/worm-qt$(EXEEXT)
 
 ui_%.h: %.ui
 	@test -f $(UIC)

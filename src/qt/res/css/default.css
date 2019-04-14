@@ -1,4 +1,4 @@
-/* Copyright (c) 2018 The Crypto Dezire Cash developers */
+/* Copyright (c) 2018 The WORM developers */
 /****************************************************************************************/
 /* Global color codes:                                                                  */
 /* dark-red:        #450000                                                             */
@@ -767,13 +767,13 @@ WalletFrame {
     border:0px solid #000;
     }
     
-    QWidget#PrivacyDialog QLabel#zCDZCLabel {
+    QWidget#PrivacyDialog QLabel#zWORMLabel {
     font-size:14px;
     color:#ffffff;
     background-color:#f6bd10;
     }
     
-    QWidget#PrivacyDialog QLabel#oCDZCLabel {
+    QWidget#PrivacyDialog QLabel#oWORMLabel {
     font-size:14px;
     color:#ffffff;
     background-color:#f6bd10;
@@ -934,16 +934,16 @@ WalletFrame {
         color: #000;
     }
     
-    /* About Crypto Dezire Cash Dialog */
+    /* About WORM Dialog */
     QDialog#AboutDialog QLabel {
         color: #000;
     }
     
-    QDialog#AboutDialog QLabel#label, QDialog#AboutDialog QLabel#copyrightLabel, QDialog#AboutDialog QLabel#label_2 { /* About Crypto Dezire Cash Contents */
+    QDialog#AboutDialog QLabel#label, QDialog#AboutDialog QLabel#copyrightLabel, QDialog#AboutDialog QLabel#label_2 { /* About WORM Contents */
     margin-left:10px;
     }
     
-    QDialog#AboutDialog QLabel#label_2 { /* Margin for About Crypto Dezire Cash text */
+    QDialog#AboutDialog QLabel#label_2 { /* Margin for About WORM text */
     margin-right:10px;
     }
     
@@ -971,11 +971,11 @@ WalletFrame {
     
     QLabel#labelOverviewHeaderRight {
     qproperty-alignment: 'AlignVCenter | AlignRight';
-    background-image: url(':/images/cryptodezirecash_logo_horizontal');
+    background-image: url(':/images/worm_logo_horizontal');
     background-repeat: no-repeat;
     }
     
-    QWidget .QFrame#frame_Header { /* Header with Page-Title and Crypto Dezire Cash-image */
+    QWidget .QFrame#frame_Header { /* Header with Page-Title and WORM-image */
     min-width:400px;
     background-color:#0d1014;
     }
@@ -1027,7 +1027,7 @@ WalletFrame {
     /* min-height:30px; */
     }
     
-    QWidget .QFrame#frame_Balances .QLabel#label_5 { /* CDZC Balances Label */
+    QWidget .QFrame#frame_Balances .QLabel#label_5 { /* WORM Balances Label */
     qproperty-alignment: 'AlignVCenter | AlignLeft';
     min-width:160px;
     background-color:transparent;
@@ -1151,7 +1151,7 @@ WalletFrame {
     margin-left:16px;
     }
     
-    QWidget .QFrame#frame_Balances .QLabel#labelLockedBalanceText { /* Available zCDZC Label */
+    QWidget .QFrame#frame_Balances .QLabel#labelLockedBalanceText { /* Available zWORM Label */
     qproperty-alignment: 'AlignVCenter | AlignLeft';
     min-width:160px;
     color:#e2dede;
@@ -1161,7 +1161,7 @@ WalletFrame {
     font-size:12px;
     }
     
-    QWidget .QFrame#frame_Balances .QLabel#labelLockedBalance { /* Available zCDZC Balance */
+    QWidget .QFrame#frame_Balances .QLabel#labelLockedBalance { /* Available zWORM Balance */
     qproperty-alignment: 'AlignVCenter | AlignLeft';
     font-size:12px;
     font-weight:bold;
@@ -1169,7 +1169,7 @@ WalletFrame {
     margin-left:0px;
     }
     
-    QWidget .QFrame#frame_Balances .QLabel#labelWatchLocked { /* Available zCDZC Balance */
+    QWidget .QFrame#frame_Balances .QLabel#labelWatchLocked { /* Available zWORM Balance */
     qproperty-alignment: 'AlignVCenter | AlignLeft';
     font-size:12px;
     margin-left:16px;
@@ -1188,7 +1188,7 @@ WalletFrame {
     padding-right:5px;
     }
     
-    QWidget .QFrame#frame_ZerocoinBalances .QLabel#labelzBalanceText { /* Available zCDZC Label */
+    QWidget .QFrame#frame_ZerocoinBalances .QLabel#labelzBalanceText { /* Available zWORM Label */
     qproperty-alignment: 'AlignVCenter | AlignLeft';
     min-width:160px;
     color:#e2dede;
@@ -1198,7 +1198,7 @@ WalletFrame {
     font-size:12px;
     }
     
-    QWidget .QFrame#frame_ZerocoinBalances .QLabel#labelzBalance { /* Available zCDZC Balance */
+    QWidget .QFrame#frame_ZerocoinBalances .QLabel#labelzBalance { /* Available zWORM Balance */
     qproperty-alignment: 'AlignVCenter | AlignLeft';
     font-size:12px;
     font-weight:bold;
@@ -1206,7 +1206,7 @@ WalletFrame {
     margin-left:0px;
     }
     
-    QWidget .QFrame#frame_ZerocoinBalances .QLabel#labelzBalanceUnconfirmedText { /* Unconfirmed zCDZC Label */
+    QWidget .QFrame#frame_ZerocoinBalances .QLabel#labelzBalanceUnconfirmedText { /* Unconfirmed zWORM Label */
     qproperty-alignment: 'AlignVCenter | AlignLeft';
     min-width:160px;
     color:#e2dede;
@@ -1216,7 +1216,7 @@ WalletFrame {
     font-size:12px;
     }
     
-    QWidget .QFrame#frame_ZerocoinBalances .QLabel#labelzBalanceUnconfirmed { /* Unconfirmed zCDZC Balance */
+    QWidget .QFrame#frame_ZerocoinBalances .QLabel#labelzBalanceUnconfirmed { /* Unconfirmed zWORM Balance */
     qproperty-alignment: 'AlignVCenter | AlignLeft';
     font-size:12px;
     font-weight:bold;
@@ -1224,7 +1224,7 @@ WalletFrame {
     margin-left:0px;
     }
     
-    QWidget .QFrame#frame_ZerocoinBalances .QLabel#labelzBalanceMatureText { /* Mature zCDZC Label */
+    QWidget .QFrame#frame_ZerocoinBalances .QLabel#labelzBalanceMatureText { /* Mature zWORM Label */
     qproperty-alignment: 'AlignVCenter | AlignLeft';
     min-width:160px;
     color:#e2dede;
@@ -1234,7 +1234,7 @@ WalletFrame {
     font-size:12px;
     }
     
-    QWidget .QFrame#frame_ZerocoinBalances .QLabel#labelzBalanceMature { /* Mature zCDZC Balance */
+    QWidget .QFrame#frame_ZerocoinBalances .QLabel#labelzBalanceMature { /* Mature zWORM Balance */
     qproperty-alignment: 'AlignVCenter | AlignLeft';
     font-size:12px;
     font-weight:bold;
@@ -1242,7 +1242,7 @@ WalletFrame {
     margin-left:0px;
     }
     
-    QWidget .QFrame#frame_ZerocoinBalances .QLabel#labelzBalanceImmatureText { /* Immature zCDZC Label */
+    QWidget .QFrame#frame_ZerocoinBalances .QLabel#labelzBalanceImmatureText { /* Immature zWORM Label */
     qproperty-alignment: 'AlignVCenter | AlignLeft';
     min-width:160px;
     color:#e2dede;
@@ -1252,7 +1252,7 @@ WalletFrame {
     font-size:12px;
     }
     
-    QWidget .QFrame#frame_ZerocoinBalances .QLabel#labelzBalanceImmature { /* Immature zCDZC Balance */
+    QWidget .QFrame#frame_ZerocoinBalances .QLabel#labelzBalanceImmature { /* Immature zWORM Balance */
     qproperty-alignment: 'AlignVCenter | AlignLeft';
     font-size:12px;
     font-weight:bold;
@@ -1271,7 +1271,7 @@ WalletFrame {
     padding-right:5px;
     }
     
-    QWidget .QFrame#frame_CombinedBalances .QLabel#labelBalanceTextz { /* Available CDZC Label */
+    QWidget .QFrame#frame_CombinedBalances .QLabel#labelBalanceTextz { /* Available WORM Label */
     qproperty-alignment: 'AlignVCenter | AlignLeft';
     min-width:160px;
     color:#e2dede;
@@ -1281,14 +1281,14 @@ WalletFrame {
     font-size:12px;
     }
     
-    QWidget .QFrame#frame_CombinedBalances .QLabel#labelBalancez { /* Available CDZC Balance */
+    QWidget .QFrame#frame_CombinedBalances .QLabel#labelBalancez { /* Available WORM Balance */
     qproperty-alignment: 'AlignVCenter | AlignLeft';
     font-size:26px;
     font-weight:normal;
     color:#ffffff;
     }
     
-    QWidget .QFrame#frame_CombinedBalances .QLabel#labelzBalanceTextz { /* Available zCDZC Label */
+    QWidget .QFrame#frame_CombinedBalances .QLabel#labelzBalanceTextz { /* Available zWORM Label */
     qproperty-alignment: 'AlignVCenter | AlignLeft';
     min-width:160px;
     color:#e2dede;
@@ -1298,7 +1298,7 @@ WalletFrame {
     font-size:12px;
     }
     
-    QWidget .QFrame#frame_CombinedBalances .QLabel#labelzBalancez { /* Available zCDZC Balance */
+    QWidget .QFrame#frame_CombinedBalances .QLabel#labelzBalancez { /* Available zWORM Balance */
     qproperty-alignment: 'AlignVCenter | AlignLeft';
     font-size:12px;
     font-weight:bold;
@@ -1672,7 +1672,7 @@ WalletFrame {
     
     }
     
-    QDialog#ZCdzcControlDialog .QTreeWidget#treeWidget { /* zCDZC Control Widget Container */
+    QDialog#ZWormControlDialog .QTreeWidget#treeWidget { /* zWORM Control Widget Container */
     outline:0;
     background-color:#ffffff;
     border:1px solid #454545;

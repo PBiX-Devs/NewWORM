@@ -1,10 +1,10 @@
 // Copyright (c) 2017 The PIVX developers
-// Copyright (c) 2018 The Crypto Dezire Cash developers
+// Copyright (c) 2018 The WORM developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef CRYPTODEZIRECASH_QT_MULTISENDDIALOG_H
-#define CRYPTODEZIRECASH_QT_MULTISENDDIALOG_H
+#ifndef WORM_QT_MULTISENDDIALOG_H
+#define WORM_QT_MULTISENDDIALOG_H
 
 #include <QDialog>
 
@@ -39,4 +39,4 @@ private:
     WalletModel* model;
 };
 
-#endif // CRYPTODEZIRECASH_QT_MULTISENDDIALOG_H
+#endif // WORM_QT_MULTISENDDIALOG_H

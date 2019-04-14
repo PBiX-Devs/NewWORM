@@ -1,7 +1,7 @@
 // Copyright (c) 2011-2014 The Bitcoin developers
 // Copyright (c) 2014-2015 The Dash developers
 // Copyright (c) 2015-2018 The PIVX developers
-// Copyright (c) 2018 The Crypto Dezire Cash developers
+// Copyright (c) 2018 The WORM developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -36,7 +36,7 @@ class TxViewDelegate : public QAbstractItemDelegate
 {
     Q_OBJECT
 public:
-    TxViewDelegate() : QAbstractItemDelegate(), unit(BitcoinUnits::CDZC)
+    TxViewDelegate() : QAbstractItemDelegate(), unit(BitcoinUnits::WORM)
     {
     }
 
@@ -61,7 +61,7 @@ public:
         bool confirmed = index.data(TransactionTableModel::ConfirmedRole).toBool();
         
         // Check transaction status 
-        // used for CDZC wallet, do not merge when merging PIVX code!!
+        // used for WORM wallet, do not merge when merging PIVX code!!
         int nStatus = index.data(TransactionTableModel::StatusRole).toInt();
         bool fConflicted = false;
         if (nStatus == TransactionStatus::Conflicted || nStatus == TransactionStatus::NotAccepted) {
@@ -169,7 +169,7 @@ OverviewPage::~OverviewPage()
     delete ui;
 }
 
-void OverviewPage::getPercentage(CAmount nUnlockedBalance, CAmount nZerocoinBalance, QString& sCDZCPercentage, QString& szCDZCPercentage)
+void OverviewPage::getPercentage(CAmount nUnlockedBalance, CAmount nZerocoinBalance, QString& sWORMPercentage, QString& szWORMPercentage)
 {
     int nPrecision = 2;
     double dzPercentage = 0.0;
@@ -188,8 +188,8 @@ void OverviewPage::getPercentage(CAmount nUnlockedBalance, CAmount nZerocoinBala
 
     double dPercentage = 100.0 - dzPercentage;
     
-    szCDZCPercentage = "(" + QLocale(QLocale::system()).toString(dzPercentage, 'f', nPrecision) + " %)";
-    sCDZCPercentage = "(" + QLocale(QLocale::system()).toString(dPercentage, 'f', nPrecision) + " %)";
+    szWORMPercentage = "(" + QLocale(QLocale::system()).toString(dzPercentage, 'f', nPrecision) + " %)";
+    sWORMPercentage = "(" + QLocale(QLocale::system()).toString(dPercentage, 'f', nPrecision) + " %)";
     
 }
 
@@ -213,26 +213,26 @@ void OverviewPage::setBalance(const CAmount& balance, const CAmount& unconfirmed
         nLockedBalance = pwalletMain->GetLockedCoins();
         nWatchOnlyLockedBalance = pwalletMain->GetLockedWatchOnlyBalance();
     }
-    // CDZC Balance
+    // WORM Balance
     CAmount nTotalBalance = balance + unconfirmedBalance;
-    CAmount cdzcAvailableBalance = balance - immatureBalance - nLockedBalance;
+    CAmount wormAvailableBalance = balance - immatureBalance - nLockedBalance;
     CAmount nUnlockedBalance = nTotalBalance - nLockedBalance;
     
-    // CDZC Watch-Only Balance
+    // WORM Watch-Only Balance
     CAmount nTotalWatchBalance = watchOnlyBalance + watchUnconfBalance;
     CAmount nAvailableWatchBalance = watchOnlyBalance - watchImmatureBalance - nWatchOnlyLockedBalance;
-    // zCDZC Balance
+    // zWORM Balance
     CAmount matureZerocoinBalance = zerocoinBalance - unconfirmedZerocoinBalance - immatureZerocoinBalance;
     // Percentages
     QString szPercentage = "";
     QString sPercentage = "";
     getPercentage(nUnlockedBalance, zerocoinBalance, sPercentage, szPercentage);
     // Combined balances
-    CAmount availableTotalBalance = cdzcAvailableBalance + matureZerocoinBalance;
+    CAmount availableTotalBalance = wormAvailableBalance + matureZerocoinBalance;
     CAmount sumTotalBalance = nTotalBalance + zerocoinBalance;
 
-    // CDZC labels
-    ui->labelBalance->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, cdzcAvailableBalance, false, BitcoinUnits::separatorAlways));
+    // WORM labels
+    ui->labelBalance->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, wormAvailableBalance, false, BitcoinUnits::separatorAlways));
     ui->labelUnconfirmed->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, unconfirmedBalance, false, BitcoinUnits::separatorAlways));
     ui->labelImmature->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, immatureBalance, false, BitcoinUnits::separatorAlways));
     ui->labelLockedBalance->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, nLockedBalance, false, BitcoinUnits::separatorAlways));
@@ -245,7 +245,7 @@ void OverviewPage::setBalance(const CAmount& balance, const CAmount& unconfirmed
     ui->labelWatchLocked->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, nWatchOnlyLockedBalance, false, BitcoinUnits::separatorAlways));
     ui->labelWatchTotal->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, nTotalWatchBalance, false, BitcoinUnits::separatorAlways));
 
-    // zCDZC labels
+    // zWORM labels
     ui->labelzBalance->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, zerocoinBalance, false, BitcoinUnits::separatorAlways));
     ui->labelzBalanceUnconfirmed->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, unconfirmedZerocoinBalance, false, BitcoinUnits::separatorAlways));
     ui->labelzBalanceMature->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, matureZerocoinBalance, false, BitcoinUnits::separatorAlways));
@@ -256,19 +256,19 @@ void OverviewPage::setBalance(const CAmount& balance, const CAmount& unconfirmed
     ui->labelTotalz->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, sumTotalBalance, false, BitcoinUnits::separatorAlways));
 
     // Percentage labels
-    ui->labelCDZCPercent->setText(sPercentage);
-    ui->labelzCDZCPercent->setText(szPercentage);
+    ui->labelWORMPercent->setText(sPercentage);
+    ui->labelzWORMPercent->setText(szPercentage);
 
     // Adjust bubble-help according to AutoMint settings
-    QString automintHelp = tr("Current percentage of zCDZC.\nIf AutoMint is enabled this percentage will settle around the configured AutoMint percentage (default = 10%).\n");
+    QString automintHelp = tr("Current percentage of zWORM.\nIf AutoMint is enabled this percentage will settle around the configured AutoMint percentage (default = 10%).\n");
     bool fEnableZeromint = GetBoolArg("-enablezeromint", true);
     int nZeromintPercentage = GetArg("-zeromintpercentage", 10);
     if (fEnableZeromint) {
         automintHelp += tr("AutoMint is currently enabled and set to ") + QString::number(nZeromintPercentage) + "%.\n";
-        automintHelp += tr("To disable AutoMint add 'enablezeromint=0' in cryptodezirecash.conf.");
+        automintHelp += tr("To disable AutoMint add 'enablezeromint=0' in worm.conf.");
     }
     else {
-        automintHelp += tr("AutoMint is currently disabled.\nTo enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in cryptodezirecash.conf");
+        automintHelp += tr("AutoMint is currently disabled.\nTo enable AutoMint change 'enablezeromint=0' to 'enablezeromint=1' in worm.conf");
     }
 
     // Only show most balances if they are non-zero for the sake of simplicity
@@ -279,49 +279,49 @@ void OverviewPage::setBalance(const CAmount& balance, const CAmount& unconfirmed
     ui->labelBalancez->setVisible(showSumAvailable);
     bool showWatchOnly = nTotalWatchBalance != 0;
 
-    // CDZC Available
-    bool showCDZCAvailable = settingShowAllBalances || cdzcAvailableBalance != nTotalBalance;
-    bool showWatchOnlyCDZCAvailable = showCDZCAvailable || nAvailableWatchBalance != nTotalWatchBalance;
-    ui->labelBalanceText->setVisible(showCDZCAvailable || showWatchOnlyCDZCAvailable);
-    ui->labelBalance->setVisible(showCDZCAvailable || showWatchOnlyCDZCAvailable);
-    ui->labelWatchAvailable->setVisible(showWatchOnlyCDZCAvailable && showWatchOnly);
+    // WORM Available
+    bool showWORMAvailable = settingShowAllBalances || wormAvailableBalance != nTotalBalance;
+    bool showWatchOnlyWORMAvailable = showWORMAvailable || nAvailableWatchBalance != nTotalWatchBalance;
+    ui->labelBalanceText->setVisible(showWORMAvailable || showWatchOnlyWORMAvailable);
+    ui->labelBalance->setVisible(showWORMAvailable || showWatchOnlyWORMAvailable);
+    ui->labelWatchAvailable->setVisible(showWatchOnlyWORMAvailable && showWatchOnly);
 
-    // CDZC Pending
-    bool showCDZCPending = settingShowAllBalances || unconfirmedBalance != 0;
-    bool showWatchOnlyCDZCPending = showCDZCPending || watchUnconfBalance != 0;
-    ui->labelPendingText->setVisible(showCDZCPending || showWatchOnlyCDZCPending);
-    ui->labelUnconfirmed->setVisible(showCDZCPending || showWatchOnlyCDZCPending);
-    ui->labelWatchPending->setVisible(showWatchOnlyCDZCPending && showWatchOnly);
+    // WORM Pending
+    bool showWORMPending = settingShowAllBalances || unconfirmedBalance != 0;
+    bool showWatchOnlyWORMPending = showWORMPending || watchUnconfBalance != 0;
+    ui->labelPendingText->setVisible(showWORMPending || showWatchOnlyWORMPending);
+    ui->labelUnconfirmed->setVisible(showWORMPending || showWatchOnlyWORMPending);
+    ui->labelWatchPending->setVisible(showWatchOnlyWORMPending && showWatchOnly);
 
-    // CDZC Immature
-    bool showCDZCImmature = settingShowAllBalances || immatureBalance != 0;
-    bool showWatchOnlyImmature = showCDZCImmature || watchImmatureBalance != 0;
-    ui->labelImmatureText->setVisible(showCDZCImmature || showWatchOnlyImmature);
-    ui->labelImmature->setVisible(showCDZCImmature || showWatchOnlyImmature); // for symmetry reasons also show immature label when the watch-only one is shown
+    // WORM Immature
+    bool showWORMImmature = settingShowAllBalances || immatureBalance != 0;
+    bool showWatchOnlyImmature = showWORMImmature || watchImmatureBalance != 0;
+    ui->labelImmatureText->setVisible(showWORMImmature || showWatchOnlyImmature);
+    ui->labelImmature->setVisible(showWORMImmature || showWatchOnlyImmature); // for symmetry reasons also show immature label when the watch-only one is shown
     ui->labelWatchImmature->setVisible(showWatchOnlyImmature && showWatchOnly); // show watch-only immature balance
 
-    // CDZC Locked
-    bool showCDZCLocked = settingShowAllBalances || nLockedBalance != 0;
-    bool showWatchOnlyCDZCLocked = showCDZCLocked || nWatchOnlyLockedBalance != 0;
-    ui->labelLockedBalanceText->setVisible(showCDZCLocked || showWatchOnlyCDZCLocked);
-    ui->labelLockedBalance->setVisible(showCDZCLocked || showWatchOnlyCDZCLocked);
-    ui->labelWatchLocked->setVisible(showWatchOnlyCDZCLocked && showWatchOnly);
+    // WORM Locked
+    bool showWORMLocked = settingShowAllBalances || nLockedBalance != 0;
+    bool showWatchOnlyWORMLocked = showWORMLocked || nWatchOnlyLockedBalance != 0;
+    ui->labelLockedBalanceText->setVisible(showWORMLocked || showWatchOnlyWORMLocked);
+    ui->labelLockedBalance->setVisible(showWORMLocked || showWatchOnlyWORMLocked);
+    ui->labelWatchLocked->setVisible(showWatchOnlyWORMLocked && showWatchOnly);
    
-    // zCDZC
-    bool showzCDZCAvailable = settingShowAllBalances || zerocoinBalance != matureZerocoinBalance;
-    bool showzCDZCUnconfirmed = settingShowAllBalances || unconfirmedZerocoinBalance != 0;
-    bool showzCDZCImmature = settingShowAllBalances || immatureZerocoinBalance != 0;
-    ui->labelzBalanceMature->setVisible(showzCDZCAvailable);
-    ui->labelzBalanceMatureText->setVisible(showzCDZCAvailable);
-    ui->labelzBalanceUnconfirmed->setVisible(showzCDZCUnconfirmed);
-    ui->labelzBalanceUnconfirmedText->setVisible(showzCDZCUnconfirmed);
-    ui->labelzBalanceImmature->setVisible(showzCDZCImmature);
-    ui->labelzBalanceImmatureText->setVisible(showzCDZCImmature);
+    // zWORM
+    bool showzWORMAvailable = settingShowAllBalances || zerocoinBalance != matureZerocoinBalance;
+    bool showzWORMUnconfirmed = settingShowAllBalances || unconfirmedZerocoinBalance != 0;
+    bool showzWORMImmature = settingShowAllBalances || immatureZerocoinBalance != 0;
+    ui->labelzBalanceMature->setVisible(showzWORMAvailable);
+    ui->labelzBalanceMatureText->setVisible(showzWORMAvailable);
+    ui->labelzBalanceUnconfirmed->setVisible(showzWORMUnconfirmed);
+    ui->labelzBalanceUnconfirmedText->setVisible(showzWORMUnconfirmed);
+    ui->labelzBalanceImmature->setVisible(showzWORMImmature);
+    ui->labelzBalanceImmatureText->setVisible(showzWORMImmature);
     
     // Percent split
     bool showPercentages = ! (zerocoinBalance == 0 && nTotalBalance == 0);
-    ui->labelCDZCPercent->setVisible(showPercentages);
-    ui->labelzCDZCPercent->setVisible(showPercentages);
+    ui->labelWORMPercent->setVisible(showPercentages);
+    ui->labelzWORMPercent->setVisible(showPercentages);
 
     static int cachedTxLocks = 0;
 
@@ -393,7 +393,7 @@ void OverviewPage::setWalletModel(WalletModel* model)
         connect(model, SIGNAL(notifyWatchonlyChanged(bool)), this, SLOT(updateWatchOnlyLabels(bool)));
     }
 
-    // update the display unit, to not use the default ("CDZC")
+    // update the display unit, to not use the default ("WORM")
     updateDisplayUnit();
 
     // Hide orphans

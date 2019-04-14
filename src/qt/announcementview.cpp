@@ -1,5 +1,5 @@
 // Copyright (c) 2018 The Social Send developers
-// Copyright (c) 2019 The Crypto Dezire Cash developers
+// Copyright (c) 2019 The WORM developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -14,13 +14,13 @@ AnnouncementView::AnnouncementView(QWidget *parent) :   QWidget(parent),
     ui->setupUi(this);
     ui->verticalLayout_3->setAlignment(Qt::AlignTop);
     lastUpdate = 0;
-    ui->mainTitleLable->setText(tr("Crypto Dezire Cash Announcement"));
+    ui->mainTitleLable->setText(tr("WORM Announcement"));
     ui->pushButton->setText(tr("Refresh"));
     //Load Announcement data
     QNetworkAccessManager *manager = new QNetworkAccessManager(this);
     connect(manager, SIGNAL(finished(QNetworkReply*)), this, SLOT(replyFinished(QNetworkReply*)));
 
-    manager->get(QNetworkRequest(QUrl("https://cryptodezire.com/api/get_cdzc_announcements/")));
+    manager->get(QNetworkRequest(QUrl("https://cryptodezire.com/api/get_worm_announcements/")));
 }
 
 AnnouncementView::~AnnouncementView()
@@ -154,6 +154,6 @@ void AnnouncementView::on_pushButton_clicked()
     QNetworkAccessManager *manager = new QNetworkAccessManager(this);
     connect(manager, SIGNAL(finished(QNetworkReply*)), this, SLOT(replyFinished(QNetworkReply*)));
 
-    manager->get(QNetworkRequest(QUrl("https://cryptodezire.com/api/get_cdzc_announcements/")));
+    manager->get(QNetworkRequest(QUrl("https://cryptodezire.com/api/get_worm_announcements/")));
     ui->pushButton->setEnabled(false);
 }

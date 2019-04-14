@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# Copyright (c) 2019 The Crypto Dezire Cash Core developers
+# Copyright (c) 2019 The WORM Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -12,9 +12,9 @@ from time import sleep
 
 from test_framework.authproxy import JSONRPCException
 
-from fake_stake.base_test import Crypto Dezire Cash_FakeStakeTest
+from fake_stake.base_test import WORM_FakeStakeTest
 
-class zPoSFakeStake(Crypto Dezire Cash_FakeStakeTest):
+class zPoSFakeStake(WORM_FakeStakeTest):
 
     def run_test(self):
         self.description = "Covers the scenario of a zPoS block where the coinstake input is a zerocoin spend of an already spent coin."

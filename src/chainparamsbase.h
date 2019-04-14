@@ -1,6 +1,6 @@
 // Copyright (c) 2014 The Bitcoin developers
 // Copyright (c) 2017 The PIVX developers
-// Copyright (c) 2018 The Crypto Dezire Cash developers
+// Copyright (c) 2018 The WORM developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -11,8 +11,8 @@
 #include <vector>
 
 /**
- * CBaseChainParams defines the base parameters (shared between cryptodezirecash-cli and cryptodezirecashd)
- * of a given instance of the Crypto Dezire Cash system.
+ * CBaseChainParams defines the base parameters (shared between worm-cli and wormd)
+ * of a given instance of the WORM system.
  */
 class CBaseChainParams
 {

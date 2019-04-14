@@ -1,6 +1,6 @@
 #!/usr/bin/env python2
 # Copyright (c) 2015-2018 The Bitcoin Core developers
-# Copyright (c) 2018 The Crypto Dezire Cash developers
+# Copyright (c) 2018 The WORM developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 import socket
@@ -101,11 +101,11 @@ class ProxyTest(BitcoinTestFramework):
         rv.append(cmd)
 
         # Test: outgoing onion connection through node
-        node.addnode("cryptodezirecashsomeaddr.onion:55002", "onetry")
+        node.addnode("wormsomeaddr.onion:55002", "onetry")
         cmd = proxies[2].queue.get()
         assert(isinstance(cmd, Socks5Command))
         assert_equal(cmd.atyp, AddressType.DOMAINNAME)
-        assert_equal(cmd.addr, "cryptodezirecashsomeaddr.onion")
+        assert_equal(cmd.addr, "wormsomeaddr.onion")
         assert_equal(cmd.port, 55002)
         if not auth:
             assert_equal(cmd.username, None)

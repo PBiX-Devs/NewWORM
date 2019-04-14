@@ -1,10 +1,10 @@
 // Copyright (c) 2018 The PIVX developers
-// Copyright (c) 2018 The Crypto Dezire Cash developers
+// Copyright (c) 2018 The WORM developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef CRYPTODEZIRECASH_ACCUMULATORCHECKPOINTS_H
-#define CRYPTODEZIRECASH_ACCUMULATORCHECKPOINTS_H
+#ifndef WORM_ACCUMULATORCHECKPOINTS_H
+#define WORM_ACCUMULATORCHECKPOINTS_H
 
 #include <libzerocoin/bignum.h>
 #include <univalue/include/univalue.h>
@@ -19,4 +19,4 @@ namespace AccumulatorCheckpoints
     Checkpoint GetClosestCheckpoint(const int& nHeight, int& nHeightCheckpoint);
 }
 
-#endif //CRYPTODEZIRECASH_ACCUMULATORCHECKPOINTS_H
+#endif //WORM_ACCUMULATORCHECKPOINTS_H

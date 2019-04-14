@@ -1,5 +1,5 @@
 // Copyright (c) 2017-2018 The PIVX developers
-// Copyright (c) 2018 The Crypto Dezire Cash developers
+// Copyright (c) 2018 The WORM developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -49,7 +49,7 @@ static std::string ValueToString(CAmount nValue, bool AllowNegative = false)
     if (nValue < 0 && !AllowNegative)
         return "<span>" + _("unknown") + "</span>";
 
-    QString Str = BitcoinUnits::formatWithUnit(BitcoinUnits::CDZC, nValue);
+    QString Str = BitcoinUnits::formatWithUnit(BitcoinUnits::WORM, nValue);
     if (AllowNegative && nValue > 0)
         Str = '+' + Str;
     return std::string("<span>") + Str.toUtf8().data() + "</span>";
@@ -478,8 +478,8 @@ void BlockExplorer::showEvent(QShowEvent*)
         updateNavButtons();
 
         if (!GetBoolArg("-txindex", true)) {
-            QString Warning = tr("Not all transactions will be shown. To view all transactions you need to set txindex=1 in the configuration file (cryptodezirecash.conf).");
-            QMessageBox::warning(this, "Crypto Dezire Cash Core Blockchain Explorer", Warning, QMessageBox::Ok);
+            QString Warning = tr("Not all transactions will be shown. To view all transactions you need to set txindex=1 in the configuration file (worm.conf).");
+            QMessageBox::warning(this, "WORM Core Blockchain Explorer", Warning, QMessageBox::Ok);
         }
     }
 }

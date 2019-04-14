@@ -3,7 +3,7 @@ Release Process
 
 Before every release candidate:
 
-* Update translations (ping nashanas on discord) see [translation_process.md](https://github.com/Crypto Dezire Cash-Project/Crypto Dezire Cash/blob/master/doc/translation_process.md#synchronising-translations).
+* Update translations (ping nashanas on discord) see [translation_process.md](https://github.com/WORM-Project/WORM/blob/master/doc/translation_process.md#synchronising-translations).
 
 Before every minor and major release:
 
@@ -24,12 +24,12 @@ If you're using the automated script (found in [contrib/gitian-build.sh](/contri
 Check out the source code in the following directory hierarchy.
 
     cd /path/to/your/toplevel/build
-    git clone https://github.com/cryptodezirecash-project/gitian.sigs.git
-    git clone https://github.com/cryptodezirecash-project/cryptodezirecash-detached-sigs.git
+    git clone https://github.com/worm-project/gitian.sigs.git
+    git clone https://github.com/worm-project/worm-detached-sigs.git
     git clone https://github.com/devrandom/gitian-builder.git
-    git clone https://github.com/cryptodezirecash-project/cryptodezirecash.git
+    git clone https://github.com/worm-project/worm.git
 
-### Crypto Dezire Cash maintainers/release engineers, suggestion for writing release notes
+### WORM maintainers/release engineers, suggestion for writing release notes
 
 Write release notes. git shortlog helps a lot, for example:
 
@@ -50,7 +50,7 @@ If you're using the automated script (found in [contrib/gitian-build.sh](/contri
 
 Setup Gitian descriptors:
 
-    pushd ./cryptodezirecash
+    pushd ./worm
     export SIGNER=(your Gitian key, ie bluematt, sipa, etc)
     export VERSION=(new version, e.g. 0.8.0)
     git fetch
@@ -84,7 +84,7 @@ Create the OS X SDK tarball, see the [OS X readme](README_osx.md) for details, a
 By default, Gitian will fetch source files as needed. To cache them ahead of time:
 
     pushd ./gitian-builder
-    make -C ../cryptodezirecash/depends download SOURCES_PATH=`pwd`/cache/common
+    make -C ../worm/depends download SOURCES_PATH=`pwd`/cache/common
     popd
 
 Only missing files will be fetched, so this is safe to re-run for each build.
@@ -92,55 +92,55 @@ Only missing files will be fetched, so this is safe to re-run for each build.
 NOTE: Offline builds must use the --url flag to ensure Gitian fetches only from local URLs. For example:
 
     pushd ./gitian-builder
-    ./bin/gbuild --url cryptodezirecash=/path/to/cryptodezirecash,signature=/path/to/sigs {rest of arguments}
+    ./bin/gbuild --url worm=/path/to/worm,signature=/path/to/sigs {rest of arguments}
     popd
 
 The gbuild invocations below <b>DO NOT DO THIS</b> by default.
 
-### Build and sign Crypto Dezire Cash Core for Linux, Windows, and OS X:
+### Build and sign WORM Core for Linux, Windows, and OS X:
 
     pushd ./gitian-builder
-    ./bin/gbuild --memory 3000 --commit cryptodezirecash=v${VERSION} ../cryptodezirecash/contrib/gitian-descriptors/gitian-linux.yml
-    ./bin/gsign --signer $SIGNER --release ${VERSION}-linux --destination ../gitian.sigs/ ../cryptodezirecash/contrib/gitian-descriptors/gitian-linux.yml
-    mv build/out/cryptodezirecash-*.tar.gz build/out/src/cryptodezirecash-*.tar.gz ../
+    ./bin/gbuild --memory 3000 --commit worm=v${VERSION} ../worm/contrib/gitian-descriptors/gitian-linux.yml
+    ./bin/gsign --signer $SIGNER --release ${VERSION}-linux --destination ../gitian.sigs/ ../worm/contrib/gitian-descriptors/gitian-linux.yml
+    mv build/out/worm-*.tar.gz build/out/src/worm-*.tar.gz ../
 
-    ./bin/gbuild --memory 3000 --commit cryptodezirecash=v${VERSION} ../cryptodezirecash/contrib/gitian-descriptors/gitian-win.yml
-    ./bin/gsign --signer $SIGNER --release ${VERSION}-win-unsigned --destination ../gitian.sigs/ ../cryptodezirecash/contrib/gitian-descriptors/gitian-win.yml
-    mv build/out/cryptodezirecash-*-win-unsigned.tar.gz inputs/cryptodezirecash-win-unsigned.tar.gz
-    mv build/out/cryptodezirecash-*.zip build/out/cryptodezirecash-*.exe ../
+    ./bin/gbuild --memory 3000 --commit worm=v${VERSION} ../worm/contrib/gitian-descriptors/gitian-win.yml
+    ./bin/gsign --signer $SIGNER --release ${VERSION}-win-unsigned --destination ../gitian.sigs/ ../worm/contrib/gitian-descriptors/gitian-win.yml
+    mv build/out/worm-*-win-unsigned.tar.gz inputs/worm-win-unsigned.tar.gz
+    mv build/out/worm-*.zip build/out/worm-*.exe ../
 
-    ./bin/gbuild --memory 3000 --commit cryptodezirecash=v${VERSION} ../cryptodezirecash/contrib/gitian-descriptors/gitian-osx.yml
-    ./bin/gsign --signer $SIGNER --release ${VERSION}-osx-unsigned --destination ../gitian.sigs/ ../cryptodezirecash/contrib/gitian-descriptors/gitian-osx.yml
-    mv build/out/cryptodezirecash-*-osx-unsigned.tar.gz inputs/cryptodezirecash-osx-unsigned.tar.gz
-    mv build/out/cryptodezirecash-*.tar.gz build/out/cryptodezirecash-*.dmg ../
+    ./bin/gbuild --memory 3000 --commit worm=v${VERSION} ../worm/contrib/gitian-descriptors/gitian-osx.yml
+    ./bin/gsign --signer $SIGNER --release ${VERSION}-osx-unsigned --destination ../gitian.sigs/ ../worm/contrib/gitian-descriptors/gitian-osx.yml
+    mv build/out/worm-*-osx-unsigned.tar.gz inputs/worm-osx-unsigned.tar.gz
+    mv build/out/worm-*.tar.gz build/out/worm-*.dmg ../
 
-    ./bin/gbuild --memory 3000 --commit cryptodezirecash=v${VERSION} ../cryptodezirecash/contrib/gitian-descriptors/gitian-aarch64.yml
-    ./bin/gsign --signer $SIGNER --release ${VERSION}-aarch64 --destination ../gitian.sigs/ ../cryptodezirecash/contrib/gitian-descriptors/gitian-aarch64.yml
-    mv build/out/cryptodezirecash-*.tar.gz build/out/src/cryptodezirecash-*.tar.gz ../
+    ./bin/gbuild --memory 3000 --commit worm=v${VERSION} ../worm/contrib/gitian-descriptors/gitian-aarch64.yml
+    ./bin/gsign --signer $SIGNER --release ${VERSION}-aarch64 --destination ../gitian.sigs/ ../worm/contrib/gitian-descriptors/gitian-aarch64.yml
+    mv build/out/worm-*.tar.gz build/out/src/worm-*.tar.gz ../
     popd
 
 Build output expected:
 
-  1. source tarball (`cryptodezirecash-${VERSION}.tar.gz`)
-  2. linux 32-bit and 64-bit dist tarballs (`cryptodezirecash-${VERSION}-linux[32|64].tar.gz`)
-  3. windows 32-bit and 64-bit unsigned installers and dist zips (`cryptodezirecash-${VERSION}-win[32|64]-setup-unsigned.exe`, `cryptodezirecash-${VERSION}-win[32|64].zip`)
-  4. OS X unsigned installer and dist tarball (`cryptodezirecash-${VERSION}-osx-unsigned.dmg`, `cryptodezirecash-${VERSION}-osx64.tar.gz`)
+  1. source tarball (`worm-${VERSION}.tar.gz`)
+  2. linux 32-bit and 64-bit dist tarballs (`worm-${VERSION}-linux[32|64].tar.gz`)
+  3. windows 32-bit and 64-bit unsigned installers and dist zips (`worm-${VERSION}-win[32|64]-setup-unsigned.exe`, `worm-${VERSION}-win[32|64].zip`)
+  4. OS X unsigned installer and dist tarball (`worm-${VERSION}-osx-unsigned.dmg`, `worm-${VERSION}-osx64.tar.gz`)
   5. Gitian signatures (in `gitian.sigs/${VERSION}-<linux|{win,osx}-unsigned>/(your Gitian key)/`)
 
 ### Verify other gitian builders signatures to your own. (Optional)
 
 Add other gitian builders keys to your gpg keyring, and/or refresh keys.
 
-    gpg --import cryptodezirecash/contrib/gitian-keys/*.pgp
+    gpg --import worm/contrib/gitian-keys/*.pgp
     gpg --refresh-keys
 
 Verify the signatures
 
     pushd ./gitian-builder
-    ./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-linux ../cryptodezirecash/contrib/gitian-descriptors/gitian-linux.yml
-    ./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-win-unsigned ../cryptodezirecash/contrib/gitian-descriptors/gitian-win.yml
-    ./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-osx-unsigned ../cryptodezirecash/contrib/gitian-descriptors/gitian-osx.yml
-    ./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-aarch64 ../cryptodezirecash/contrib/gitian-descriptors/gitian-aarch64.yml
+    ./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-linux ../worm/contrib/gitian-descriptors/gitian-linux.yml
+    ./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-win-unsigned ../worm/contrib/gitian-descriptors/gitian-win.yml
+    ./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-osx-unsigned ../worm/contrib/gitian-descriptors/gitian-osx.yml
+    ./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-aarch64 ../worm/contrib/gitian-descriptors/gitian-aarch64.yml
     popd
 
 ### Next steps:
@@ -162,22 +162,22 @@ Codesigner only: Create Windows/OS X detached signatures:
 
 Codesigner only: Sign the osx binary:
 
-    transfer cryptodezirecash-osx-unsigned.tar.gz to osx for signing
-    tar xf cryptodezirecash-osx-unsigned.tar.gz
+    transfer worm-osx-unsigned.tar.gz to osx for signing
+    tar xf worm-osx-unsigned.tar.gz
     ./detached-sig-create.sh -s "Key ID"
     Enter the keychain password and authorize the signature
     Move signature-osx.tar.gz back to the gitian host
 
 Codesigner only: Sign the windows binaries:
 
-    tar xf cryptodezirecash-win-unsigned.tar.gz
+    tar xf worm-win-unsigned.tar.gz
     ./detached-sig-create.sh -key /path/to/codesign.key
     Enter the passphrase for the key when prompted
     signature-win.tar.gz will be created
 
 Codesigner only: Commit the detached codesign payloads:
 
-    cd ~/cryptodezirecash-detached-sigs
+    cd ~/worm-detached-sigs
     checkout the appropriate branch for this release series
     rm -rf *
     tar xf signature-osx.tar.gz
@@ -190,25 +190,25 @@ Codesigner only: Commit the detached codesign payloads:
 Non-codesigners: wait for Windows/OS X detached signatures:
 
 - Once the Windows/OS X builds each have 3 matching signatures, they will be signed with their respective release keys.
-- Detached signatures will then be committed to the [cryptodezirecash-detached-sigs](https://github.com/Crypto Dezire Cash-Project/cryptodezirecash-detached-sigs) repository, which can be combined with the unsigned apps to create signed binaries.
+- Detached signatures will then be committed to the [worm-detached-sigs](https://github.com/WORM-Project/worm-detached-sigs) repository, which can be combined with the unsigned apps to create signed binaries.
 
 Create (and optionally verify) the signed OS X binary:
 
     pushd ./gitian-builder
-    ./bin/gbuild -i --commit signature=v${VERSION} ../cryptodezirecash/contrib/gitian-descriptors/gitian-osx-signer.yml
-    ./bin/gsign --signer $SIGNER --release ${VERSION}-osx-signed --destination ../gitian.sigs/ ../cryptodezirecash/contrib/gitian-descriptors/gitian-osx-signer.yml
-    ./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-osx-signed ../cryptodezirecash/contrib/gitian-descriptors/gitian-osx-signer.yml
-    mv build/out/cryptodezirecash-osx-signed.dmg ../cryptodezirecash-${VERSION}-osx.dmg
+    ./bin/gbuild -i --commit signature=v${VERSION} ../worm/contrib/gitian-descriptors/gitian-osx-signer.yml
+    ./bin/gsign --signer $SIGNER --release ${VERSION}-osx-signed --destination ../gitian.sigs/ ../worm/contrib/gitian-descriptors/gitian-osx-signer.yml
+    ./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-osx-signed ../worm/contrib/gitian-descriptors/gitian-osx-signer.yml
+    mv build/out/worm-osx-signed.dmg ../worm-${VERSION}-osx.dmg
     popd
 
 Create (and optionally verify) the signed Windows binaries:
 
     pushd ./gitian-builder
-    ./bin/gbuild -i --commit signature=v${VERSION} ../cryptodezirecash/contrib/gitian-descriptors/gitian-win-signer.yml
-    ./bin/gsign --signer $SIGNER --release ${VERSION}-win-signed --destination ../gitian.sigs/ ../cryptodezirecash/contrib/gitian-descriptors/gitian-win-signer.yml
-    ./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-win-signed ../cryptodezirecash/contrib/gitian-descriptors/gitian-win-signer.yml
-    mv build/out/cryptodezirecash-*win64-setup.exe ../cryptodezirecash-${VERSION}-win64-setup.exe
-    mv build/out/cryptodezirecash-*win32-setup.exe ../cryptodezirecash-${VERSION}-win32-setup.exe
+    ./bin/gbuild -i --commit signature=v${VERSION} ../worm/contrib/gitian-descriptors/gitian-win-signer.yml
+    ./bin/gsign --signer $SIGNER --release ${VERSION}-win-signed --destination ../gitian.sigs/ ../worm/contrib/gitian-descriptors/gitian-win-signer.yml
+    ./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-win-signed ../worm/contrib/gitian-descriptors/gitian-win-signer.yml
+    mv build/out/worm-*win64-setup.exe ../worm-${VERSION}-win64-setup.exe
+    mv build/out/worm-*win32-setup.exe ../worm-${VERSION}-win32-setup.exe
     popd
 
 Commit your signature for the signed OS X/Windows binaries:
@@ -230,23 +230,23 @@ sha256sum * > SHA256SUMS
 
 The list of files should be:
 ```
-cryptodezirecash-${VERSION}-aarch64-linux-gnu.tar.gz
-cryptodezirecash-${VERSION}-arm-linux-gnueabihf.tar.gz
-cryptodezirecash-${VERSION}-i686-pc-linux-gnu.tar.gz
-cryptodezirecash-${VERSION}-x86_64-linux-gnu.tar.gz
-cryptodezirecash-${VERSION}-osx64.tar.gz
-cryptodezirecash-${VERSION}-osx.dmg
-cryptodezirecash-${VERSION}.tar.gz
-cryptodezirecash-${VERSION}-win32-setup.exe
-cryptodezirecash-${VERSION}-win32.zip
-cryptodezirecash-${VERSION}-win64-setup.exe
-cryptodezirecash-${VERSION}-win64.zip
+worm-${VERSION}-aarch64-linux-gnu.tar.gz
+worm-${VERSION}-arm-linux-gnueabihf.tar.gz
+worm-${VERSION}-i686-pc-linux-gnu.tar.gz
+worm-${VERSION}-x86_64-linux-gnu.tar.gz
+worm-${VERSION}-osx64.tar.gz
+worm-${VERSION}-osx.dmg
+worm-${VERSION}.tar.gz
+worm-${VERSION}-win32-setup.exe
+worm-${VERSION}-win32.zip
+worm-${VERSION}-win64-setup.exe
+worm-${VERSION}-win64.zip
 ```
 The `*-debug*` files generated by the gitian build contain debug symbols
 for troubleshooting by developers. It is assumed that anyone that is interested
 in debugging can run gitian to generate the files for themselves. To avoid
 end-user confusion about which file to pick, as well as save storage
-space *do not upload these to the cryptodezirecash.org server*.
+space *do not upload these to the worm.org server*.
 
 - GPG-sign it, delete the unsigned file:
 ```
@@ -262,10 +262,10 @@ Note: check that SHA256SUMS itself doesn't end up in SHA256SUMS, which is a spur
 
   - bitcointalk announcement thread
 
-  - Optionally twitter, reddit /r/cryptodezirecash, ... but this will usually sort out itself
+  - Optionally twitter, reddit /r/worm, ... but this will usually sort out itself
 
   - Archive release notes for the new version to `doc/release-notes/` (branch `master` and branch of the release)
 
-  - Create a [new GitHub release](https://github.com/Crypto Dezire Cash-Project/Crypto Dezire Cash/releases/new) with a link to the archived release notes.
+  - Create a [new GitHub release](https://github.com/WORM-Project/WORM/releases/new) with a link to the archived release notes.
 
   - Celebrate

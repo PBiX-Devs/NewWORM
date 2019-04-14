@@ -1,6 +1,6 @@
 ### TestGen ###
 
-Utilities to generate test vectors for the data-driven Crypto Dezire Cash tests.
+Utilities to generate test vectors for the data-driven WORM tests.
 
 Usage: 
 

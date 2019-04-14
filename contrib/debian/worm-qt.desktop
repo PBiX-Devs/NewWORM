@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=WORM
+Comment=WORM P2P Cryptocurrency
+Comment[fr]=WORM, monnaie virtuelle cryptographique pair à pair
+Comment[tr]=WORM, eşten eşe kriptografik sanal para birimi
+Exec=worm-qt %u
+Terminal=false
+Type=Application
+Icon=worm128
+MimeType=x-scheme-handler/worm;
+Categories=Office;Finance;
