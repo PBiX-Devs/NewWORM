@@ -1856,103 +1856,21 @@ int64_t GetBlockValue(int nHeight)
         if (nHeight < 200 && nHeight > 0)
             return 250000 * COIN;
     }
-
     int64_t nSubsidy = 0;
-   
-    if (Params().NetworkID() == CBaseChainParams::REGTEST || Params().NetworkID() == CBaseChainParams::TESTNET) {
-        if (nHeight == 0) {
-            // Genesis block
-            return 0 * COIN;
-        } else if (nHeight == 1) {
-            /* PREMINE: Current available worm on DEX marketc 198360471 worm
-            Info abobut premine: 
-            Full premine size is 198360471. First 100 blocks mine 250000 worm per block - 198360471 - (100 * 250000) = 173360471
-            */
-            // 87.4 % of premine
-            return 173360471 * COIN;
-        } else if (nHeight < 200 && nHeight > 1) {
-            return 250000 * COIN;
-        } else if (nHeight >= 200 && nHeight <= Params().LAST_POW_BLOCK()) {
-            return 100000 * COIN;
-        } else if (nHeight > Params().LAST_POW_BLOCK() && nHeight <= Params().Zerocoin_Block_V2_Start()) { 
-            return 3.8 / 90 * 100 * COIN;
-        } else if (nHeight > Params().Zerocoin_Block_V2_Start()) {
-            return 3.8 * COIN;
-        } else {
-            return 0 * COIN;
-        }
-    } else {
-        // MAIN
-        if (nHeight == 0) {
-            // Genesis block
-            nSubsidy = 0 * COIN;
-        } else if (nHeight == 1) {
-            /* PREMINE*/
-            nSubsidy = 600000 * COIN;
-        } else if (nHeight <= 100) { 
-            nSubsidy = 0 * COIN;
-        } else if (nHeight <= 50101) {
-            nSubsidy = 2 * COIN;
-        } else if (nHeight <= 100102) { 
-            nSubsidy = 3 * COIN;
-        } else if (nHeight <= 200103) { 
-            nSubsidy = 4 * COIN;
-        } else if (nHeight <= 254999) { 
-            nSubsidy = 5 * COIN;
-        } else if (nHeight <= 400105) { 
-            nSubsidy = 3 * COIN;
-        } else if (nHeight <= 500106) { 
-            nSubsidy = 3.5 * COIN;
-        } else if (nHeight <= 600107) { 
-            nSubsidy = 4 * COIN;
-        } else if (nHeight <= 700108) { 
-            nSubsidy = 4.5 * COIN;
-        } else if (nHeight <= 1000109) { 
-            nSubsidy = 5 * COIN;
-        } else if (nHeight <= 1100110) { 
-            nSubsidy = 4 * COIN;
-        } else if (nHeight <= 1200111) { 
-            nSubsidy = 3 * COIN;
-        } else { 
-            nSubsidy = 2 * COIN;
-        } 
-    }
-
-    return nSubsidy;
+    if (nHeight == 1) { nSubsidy = 1500000 * COIN; }
+	return nSubsidy;
 }
 
 
 CAmount GetMasternodePayment(int nHeight, int64_t blockValue, int nMasternodeCount, bool isZWGRStake)
 {
-    CAmount ret = 0;
-
-    if (Params().NetworkID() == CBaseChainParams::TESTNET) {
-        if (nHeight < 200)
-            return 0;
-    }
-
-    if (nHeight < 101) {
-        ret = 0; 
-    } else if (nHeight <= 200103) {
-            ret = blockValue * .75; 
-    } else {
-        if ((nHeight > 254999) && isZWGRStake)
-            ret = 0;
-        else
-            ret = blockValue * .74;  
-    } 
-    
+    CAmount ret = blockValue * .34;  
     return ret;
 }
 
 CAmount GetDevFundPayment(int nHeight, int64_t blockValue)
 {
-    CAmount ret_val = 0;
-    if (nHeight <= 200103) {
-            ret_val = 0;   
-    } else {
-            ret_val = blockValue * .01;  
-    }
+    CAmount ret_val = blockValue * .01;  
     return ret_val;
 }
 
